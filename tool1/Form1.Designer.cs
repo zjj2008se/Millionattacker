@@ -39,6 +39,9 @@
             this.labelBC = new System.Windows.Forms.Label();
             this.labelGold = new System.Windows.Forms.Label();
             this.comboBoxAreaList = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxfloor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textLogin
@@ -133,17 +136,47 @@
             // comboBoxAreaList
             // 
             this.comboBoxAreaList.FormattingEnabled = true;
-            this.comboBoxAreaList.Location = new System.Drawing.Point(56, 178);
+            this.comboBoxAreaList.Location = new System.Drawing.Point(78, 177);
             this.comboBoxAreaList.Name = "comboBoxAreaList";
             this.comboBoxAreaList.Size = new System.Drawing.Size(163, 20);
             this.comboBoxAreaList.TabIndex = 10;
             this.comboBoxAreaList.SelectedIndexChanged += new System.EventHandler(this.comboBoxAreaList_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 180);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "地图：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 209);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "区域：";
+            // 
+            // comboBoxfloor
+            // 
+            this.comboBoxfloor.FormattingEnabled = true;
+            this.comboBoxfloor.Location = new System.Drawing.Point(78, 206);
+            this.comboBoxfloor.Name = "comboBoxfloor";
+            this.comboBoxfloor.Size = new System.Drawing.Size(163, 20);
+            this.comboBoxfloor.TabIndex = 13;
+            this.comboBoxfloor.SelectedIndexChanged += new System.EventHandler(this.comboBoxfloor_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 320);
+            this.Controls.Add(this.comboBoxfloor);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxAreaList);
             this.Controls.Add(this.labelGold);
             this.Controls.Add(this.labelBC);
@@ -175,6 +208,9 @@
         private System.Windows.Forms.Label labelBC;
         private System.Windows.Forms.Label labelGold;
         private System.Windows.Forms.ComboBox comboBoxAreaList;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxfloor;
     }
 }
 

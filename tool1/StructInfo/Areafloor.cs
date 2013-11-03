@@ -7,5 +7,9 @@ namespace MillionTools.tool1.StructInfo
 {
     class Areafloor
     {
+        public string id ;
+        public string cost;
+        public string prog;
+
     }
 }

@@ -17,7 +17,8 @@ namespace MillionTools.tool1
 
 
         public void login(string login_id, string password) {
-            XmlDocument response = GameUtil.login(login_id,password);
+            GameUtil.setlogin(login_id,password);
+            GameUtil.login();
 
         }
 
@@ -40,17 +41,59 @@ namespace MillionTools.tool1
                     area.CardProg = child["prog_item"].InnerText;
                     area.AreaType = child["area_type"].InnerText;
                     arealist.arealist.Add(area);
-
-                    
-                
             }
 
 
             return arealist;
         }
-        public FairyInfo getFairyInfo() {
+        public FloorList getfloorlist(string id) 
+        {
+            FloorList floorlist = new FloorList();
+            XmlDocument response = GameUtil.getfloor(id);
+            XmlNodeList nodelist = response.SelectNodes(
+               "/response/body/exploration_floor/floor_info_list/floor_info");
 
-            return null;
+            foreach (XmlNode child in nodelist)
+            {
+                Areafloor floor = new Areafloor();
+                floor.id = child["id"].InnerText;
+                floor.cost = child["cost"].InnerText;
+                floor.prog = child["progress"].InnerText;
+                floorlist.floorlist.Add(floor);
+                debugstring = child.InnerText;
+            }
+            return floorlist;
+        }
+
+
+        public FairyList getFairyInfo() {
+            FairyList list = new FairyList();
+            XmlDocument response = GameUtil.getfairylist();
+            XmlNodeList nodelist = response.SelectNodes(
+                                    "/response/body/fairy_select/fairy_event/fairy");
+
+            XmlNodeList nodelist1 = response.SelectNodes(
+                                    "/response/body/fairy_select/fairy_event/user");
+            foreach (XmlNode child in nodelist)
+            {
+                FairyInfo info = new FairyInfo();
+                info.FairyName = child["name"].InnerText;
+                info.sid = child["serial_id"].InnerText;
+                info.LV = child["lv"].InnerText;
+                if (child["put_down"].InnerText == "1")
+                {
+                    info.IsAlive = true;
+                }
+                else 
+                {
+                    info.IsAlive = false;
+                }
+
+
+                //info.StartTime =int.Parse( child["/user/start_time"].InnerText);
+                debugstring = child.InnerText;
+            }
+            return list;
         }
 
         public string getdebugstring() 

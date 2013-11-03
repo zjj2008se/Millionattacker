@@ -63,6 +63,7 @@
     <Compile Include="tool1\StructInfo\Area.cs" />
     <Compile Include="tool1\StructInfo\Areafloor.cs" />
     <Compile Include="tool1\StructInfo\AreaList.cs" />
+    <Compile Include="tool1\StructInfo\ComboxItem.cs" />
     <Compile Include="tool1\StructInfo\FairyInfo.cs" />
     <Compile Include="tool1\StructInfo\FairyList.cs" />
     <Compile Include="tool1\StructInfo\FloorList.cs" />

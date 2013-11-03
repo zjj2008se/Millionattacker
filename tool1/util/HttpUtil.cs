@@ -27,6 +27,7 @@ namespace MillionTools.tool1.util
         CookieCollection cookies = new CookieCollection();
         public string s = null;
         public string response1 = null;
+        public bool islogin = false;
         private IDictionary<string, string> docrypt(IDictionary<string, string> data)
         {
             if (data == null)
@@ -152,10 +153,10 @@ namespace MillionTools.tool1.util
 
                 }
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                if (s == null)
+                if (islogin == false)
                 {
                     cookies = response.Cookies;
-                    s = "1";
+                    islogin = true;
                     
                 }
                 Stream responseStream = response.GetResponseStream();

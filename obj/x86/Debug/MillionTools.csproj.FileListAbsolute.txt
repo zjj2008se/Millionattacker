@@ -6,3 +6,4 @@ E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.csproj.GenerateResource.Cache
 E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe
 E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.pdb
+E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.csprojResolveAssemblyReference.cache

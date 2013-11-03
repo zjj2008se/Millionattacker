@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         AreaList area = new AreaList();
         FloorList floor = new FloorList();
         string floorid = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,13 +27,13 @@ namespace WindowsFormsApplication1
         {
             PlayerInfo playerinfo = new PlayerInfo();
 
-            Action.login("15099797743", "qwertyuiop");
+            Action.login("15551961467", "12345678");
             Action.getPlayerInfo(ref playerinfo);
             labelPlayerName.Text = "玩家名称: " + playerinfo.PlayerName;
             labelAP.Text = "AP:  "+ playerinfo.NowAP +"/" + playerinfo.MaxAP.ToString();
             labelBC.Text = "BC:  "+ playerinfo.NowBC +"/"  + playerinfo.MaxBC.ToString();
             labelGold.Text = "金钱： " + playerinfo.gold;
-            
+
             area = Action.getarealist();
             int count = area.arealist.Count;
             for (int j = 0; j < count; j++) 
@@ -44,7 +45,6 @@ namespace WindowsFormsApplication1
                 };
                 
                 comboBoxAreaList.Items.Add(item);
-                //comboBoxAreaList.Controls.Add(area.arealist[j].Areaid);
             }
                 textBoxoutput.Text = Action.getdebugstring();
         }
@@ -77,6 +77,38 @@ namespace WindowsFormsApplication1
                 floorid = ((ComboxItem)comboBoxAreaList.SelectedItem).Value.ToString();
             }
         }
+
+        private void buttonAutoBattle_Click(object sender, EventArgs e)
+        {
+
+            FairyList list = new FairyList();
+            list = Action.getFairyInfo();
+            textBoxoutput.Text = Action.getdebugstring();
+            int count = list.List.Count;
+            listViewFairyInfo.Items.Clear();
+            for(int i =0; i <count;i++)
+            {  
+                ListViewItem item = new ListViewItem();
+                item.SubItems.Clear();
+                item.SubItems[0].Text = list.List[i].FairyName;
+                item.SubItems.Add(list.List[i].LV);
+                item.SubItems.Add(list.List[i].OwnerName);
+                item.SubItems.Add("否");
+                if (list.List[i].IsAlive == true)
+                {
+                    item.SubItems.Add("是");
+                }
+                else
+                {
+                    item.SubItems.Add("否");
+                }
+                listViewFairyInfo.Items.Add(item);
+
+
+            }
+            listViewFairyInfo.Refresh();
+        }
+
         
 
     }

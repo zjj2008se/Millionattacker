@@ -42,6 +42,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxfloor = new System.Windows.Forms.ComboBox();
+            this.buttonAutoBattle = new System.Windows.Forms.Button();
+            this.listViewFairyInfo = new System.Windows.Forms.ListView();
+            this.buttonAutoExplore = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // textLogin
@@ -89,12 +97,12 @@
             // 
             // textBoxoutput
             // 
-            this.textBoxoutput.Location = new System.Drawing.Point(267, 12);
+            this.textBoxoutput.Location = new System.Drawing.Point(601, 15);
             this.textBoxoutput.Multiline = true;
             this.textBoxoutput.Name = "textBoxoutput";
             this.textBoxoutput.ReadOnly = true;
             this.textBoxoutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxoutput.Size = new System.Drawing.Size(328, 276);
+            this.textBoxoutput.Size = new System.Drawing.Size(299, 296);
             this.textBoxoutput.TabIndex = 5;
             // 
             // labelPlayerName
@@ -169,11 +177,72 @@
             this.comboBoxfloor.TabIndex = 13;
             this.comboBoxfloor.SelectedIndexChanged += new System.EventHandler(this.comboBoxfloor_SelectedIndexChanged);
             // 
+            // buttonAutoBattle
+            // 
+            this.buttonAutoBattle.Location = new System.Drawing.Point(11, 248);
+            this.buttonAutoBattle.Name = "buttonAutoBattle";
+            this.buttonAutoBattle.Size = new System.Drawing.Size(75, 27);
+            this.buttonAutoBattle.TabIndex = 14;
+            this.buttonAutoBattle.Text = "自动攻击";
+            this.buttonAutoBattle.UseVisualStyleBackColor = true;
+            this.buttonAutoBattle.Click += new System.EventHandler(this.buttonAutoBattle_Click);
+            // 
+            // listViewFairyInfo
+            // 
+            this.listViewFairyInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listViewFairyInfo.FullRowSelect = true;
+            this.listViewFairyInfo.GridLines = true;
+            this.listViewFairyInfo.Location = new System.Drawing.Point(247, 16);
+            this.listViewFairyInfo.MultiSelect = false;
+            this.listViewFairyInfo.Name = "listViewFairyInfo";
+            this.listViewFairyInfo.Size = new System.Drawing.Size(339, 292);
+            this.listViewFairyInfo.TabIndex = 15;
+            this.listViewFairyInfo.UseCompatibleStateImageBehavior = false;
+            this.listViewFairyInfo.View = System.Windows.Forms.View.Details;
+            // 
+            // buttonAutoExplore
+            // 
+            this.buttonAutoExplore.Location = new System.Drawing.Point(170, 250);
+            this.buttonAutoExplore.Name = "buttonAutoExplore";
+            this.buttonAutoExplore.Size = new System.Drawing.Size(71, 22);
+            this.buttonAutoExplore.TabIndex = 16;
+            this.buttonAutoExplore.Text = "自动跑图";
+            this.buttonAutoExplore.UseVisualStyleBackColor = true;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "妖精名称";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "妖精等级";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "所有人";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "被攻击";
+            this.columnHeader4.Width = 64;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "存活";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 320);
+            this.ClientSize = new System.Drawing.Size(1041, 320);
+            this.Controls.Add(this.buttonAutoExplore);
+            this.Controls.Add(this.listViewFairyInfo);
+            this.Controls.Add(this.buttonAutoBattle);
             this.Controls.Add(this.comboBoxfloor);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -211,6 +280,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxfloor;
+        private System.Windows.Forms.Button buttonAutoBattle;
+        private System.Windows.Forms.ListView listViewFairyInfo;
+        private System.Windows.Forms.Button buttonAutoExplore;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
 

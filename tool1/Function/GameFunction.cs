@@ -69,18 +69,21 @@ namespace MillionTools.tool1
         public FairyList getFairyInfo() {
             FairyList list = new FairyList();
             XmlDocument response = GameUtil.getfairylist();
-            XmlNodeList nodelist = response.SelectNodes(
-                                    "/response/body/fairy_select/fairy_event/fairy");
 
-            XmlNodeList nodelist1 = response.SelectNodes(
-                                    "/response/body/fairy_select/fairy_event/user");
-            foreach (XmlNode child in nodelist)
+            //debugstring = response.OuterXml;
+
+            XmlNodeList nodelist = response.SelectNodes(
+                                    "/response/body/fairy_select/fairy_event");
+            int count = nodelist.Count;
+            debugstring = nodelist.Item(0).SelectSingleNode("user/id").InnerXml;
+            for (int i = 0; i <count ; i++)
             {
                 FairyInfo info = new FairyInfo();
-                info.FairyName = child["name"].InnerText;
-                info.sid = child["serial_id"].InnerText;
-                info.LV = child["lv"].InnerText;
-                if (child["put_down"].InnerText == "1")
+                info.OwnerName = nodelist.Item(i).SelectSingleNode("user/name").InnerXml;
+                info.sid = nodelist.Item(i).SelectSingleNode("user/name").InnerXml;
+                info.FairyName = nodelist.Item(i).SelectSingleNode("fairy/name").InnerXml;
+                info.LV = nodelist.Item(i).SelectSingleNode("fairy/lv").InnerXml;
+                if (nodelist.Item(i).SelectSingleNode("put_down").InnerXml == "1")
                 {
                     info.IsAlive = true;
                 }
@@ -88,11 +91,10 @@ namespace MillionTools.tool1
                 {
                     info.IsAlive = false;
                 }
-
-
-                //info.StartTime =int.Parse( child["/user/start_time"].InnerText);
-                debugstring = child.InnerText;
+                debugstring = nodelist.Item(i).SelectSingleNode("user/name").InnerXml; 
+                list.List.Add(info);
             }
+            
             return list;
         }
 

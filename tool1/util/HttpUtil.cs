@@ -82,18 +82,7 @@ namespace MillionTools.tool1.util
                     Cookie cookie2 = new Cookie("S", s);
                     Cookie cookie = cookie2;
                 }
-                /*String url = "http://" + baseurl + exurl;
-                XmlDocument document = null;
-                try
-                {
-                    document = this.CreatePostHttpResponse(url, data, 0xc350, string.Empty, Encoding.Default, cookies);
-                }
-                catch (Exception)
-                {
-                    goto ;
-                }
-                 CreatePostHttpResponse(string url, IDictionary<string, string> parameters, int? timeout, string userAgent, Encoding requestEncoding, CookieCollection cookies)
-                 */
+
                 Encoding encoding;
                 if (string.IsNullOrEmpty(url))
                 {
@@ -108,8 +97,7 @@ namespace MillionTools.tool1.util
                 request.UserAgent = UA;
                 request.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
                 request.KeepAlive = true;
-                //request.CookieContainer.Add(cookies);
-                //request.Timeout = 0xc350;
+                request.Timeout = 0xc350;
 
                 if (cookies != null)
                 {
@@ -176,38 +164,17 @@ namespace MillionTools.tool1.util
                     result = memoryStream.ToArray();
 
                 }
-                /*int contentLength = (int)response.ContentLength;
-                bytes = null;
-                int count = 0x64000;
-                if (contentLength < 0)
-                {
-                    bytes = new byte[count];
-                    MemoryStream stream3 = new MemoryStream();
-                    for (int i = responseStream.Read(bytes, 0, count); i > 0; i = responseStream.Read(bytes, 0, count))
-                    {
-                        stream3.Write(bytes, 0, i);
-                    }
-                    bytes = stream3.ToArray();
-                    stream3.Close();
-                }
-                else
-                {
-                    bytes = new byte[contentLength];
-                    int offset = 0;
-                    while (contentLength > 0)
-                    {
-                        int num6 = responseStream.Read(bytes, offset, contentLength);
-                        offset += num6;
-                        contentLength -= num6;
-                    }
-                }*/
+
                 response.Close();
                 XmlDocument document = new XmlDocument();
                 response1 = decrypt(result);
                 document.LoadXml(decrypt(result));
                 return document;
             }
-            catch { return null; }
+            catch (System.Net.WebException) 
+            {
+                return post(data, exurl);
+            }
             
         }
 

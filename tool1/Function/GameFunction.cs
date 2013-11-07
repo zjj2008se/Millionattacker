@@ -13,12 +13,18 @@ namespace MillionTools.tool1
         GameUtil GameUtil = new GameUtil();
         private FairyList fairylist= new FairyList();
         string debugstring = "";
-        //private AreaList arealist =  new AreaList();
+        bool ishavefairy = false;
+        bool fariyinit = false;
+        private string gameid;
+        private string password;
+        public FairyList list = new FairyList();
+        public PlayerInfo nowinfo = new PlayerInfo();
+        int items;
 
-
-        public void login(string login_id, string password) {
-            GameUtil.setlogin(login_id,password);
-            GameUtil.login();
+        public void login(string login_id, string password1) {
+            gameid = login_id;
+            password = password1;
+            GameUtil.login(gameid, password);
 
         }
 
@@ -67,34 +73,83 @@ namespace MillionTools.tool1
 
 
         public FairyList getFairyInfo() {
-            FairyList list = new FairyList();
+            
             XmlDocument response = GameUtil.getfairylist();
 
             //debugstring = response.OuterXml;
-
-            XmlNodeList nodelist = response.SelectNodes(
-                                    "/response/body/fairy_select/fairy_event");
-            int count = nodelist.Count;
-            debugstring = nodelist.Item(0).SelectSingleNode("user/id").InnerXml;
-            for (int i = 0; i <count ; i++)
+            try
             {
-                FairyInfo info = new FairyInfo();
-                info.OwnerName = nodelist.Item(i).SelectSingleNode("user/name").InnerXml;
-                info.sid = nodelist.Item(i).SelectSingleNode("user/name").InnerXml;
-                info.FairyName = nodelist.Item(i).SelectSingleNode("fairy/name").InnerXml;
-                info.LV = nodelist.Item(i).SelectSingleNode("fairy/lv").InnerXml;
-                if (nodelist.Item(i).SelectSingleNode("put_down").InnerXml == "1")
+                XmlNodeList nodelist = response.SelectNodes(
+                                        "/response/body/fairy_select/fairy_event");
+                int count = nodelist.Count;
+                debugstring = nodelist.Item(0).SelectSingleNode("user/id").InnerText;
+                if (fariyinit == true)
                 {
-                    info.IsAlive = true;
+                    int count2 = list.List.Count;
+                        for (int i = 0; i < count; i++)
+                        {
+                            bool issame = false;
+                            for (int j = 0; j < count2; j++)
+                            {
+
+                                if (list.List[j].sid == nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText &&
+                                    list.List[j].LV == nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText)
+                                {
+                                    issame = true;
+                                    break;
+                                }
+                            }
+                            if (issame == false)
+                            {
+                                FairyInfo info = new FairyInfo();
+                                info.OwnerName = nodelist.Item(i).SelectSingleNode("user/name").InnerText;
+                                info.OwnerID = nodelist.Item(i).SelectSingleNode("user/id").InnerText;
+                                info.FairyName = nodelist.Item(i).SelectSingleNode("fairy/name").InnerText;
+                                info.LV = nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText;
+                                info.sid = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
+                                info.IsAttack = false;
+                                if (nodelist.Item(i).SelectSingleNode("put_down").InnerText == "1")
+                                {
+                                    info.IsAlive = true;
+                                }
+                                else
+                                {
+                                    info.IsAlive = false;
+                                }
+                                debugstring = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
+                                list.List.Add(info);
+                            }
+                    }
                 }
-                else 
-                {
-                    info.IsAlive = false;
+                if(fariyinit == false)                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        FairyInfo info = new FairyInfo();
+                        info.OwnerName = nodelist.Item(i).SelectSingleNode("user/name").InnerText;
+                        info.OwnerID = nodelist.Item(i).SelectSingleNode("user/id").InnerText;
+                        info.FairyName = nodelist.Item(i).SelectSingleNode("fairy/name").InnerText;
+                        info.LV = nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText;
+                        info.sid = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
+                        info.IsAttack = false;
+                        if (nodelist.Item(i).SelectSingleNode("put_down").InnerText == "1")
+                        {
+                            info.IsAlive = true;
+                        }
+                        else
+                        {
+                            info.IsAlive = false;
+                        }
+                        debugstring = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
+                        list.List.Add(info);
+                    }
+                    fariyinit = true;
                 }
-                debugstring = nodelist.Item(i).SelectSingleNode("user/name").InnerXml; 
-                list.List.Add(info);
             }
-            
+            catch (System.NullReferenceException)
+            {
+                int code = geterrorcode(response);
+
+            }
             return list;
         }
 
@@ -110,7 +165,7 @@ namespace MillionTools.tool1
         }
 
         public bool getPlayerInfo(ref PlayerInfo playerinfo) {
-            PlayerInfo nowinfo = new PlayerInfo();
+
             XmlDocument response = GameUtil.getPlayerInfo();
             try
             {
@@ -130,12 +185,33 @@ namespace MillionTools.tool1
                     "/response/body/login/user_id").InnerText;
                 playerinfo = nowinfo;
             }
-            catch {
+            catch(System.NullReferenceException)
+            {
                 int code = geterrorcode(response);
             
             }
             return false;
 
+        }
+        public string explore(string areaid ,string floor)
+        {
+            XmlDocument response = GameUtil.explore(areaid , floor);
+            debugstring = response.SelectSingleNode("/response").InnerXml;
+            if (response.SelectSingleNode("/response/body/explore/event_type").InnerText == "1")
+            {
+                FairyInfo info = new FairyInfo();
+                this.ishavefairy = true;
+                info.FairyName = response.SelectSingleNode("/response/body/explore/fairy/name").InnerText;
+                info.LV = response.SelectSingleNode("/response/body/explore/fairy/lv").InnerText;
+                info.OwnerID = nowinfo.playerid;
+                info.OwnerName = nowinfo.PlayerName;
+                list.List.Add(info);
+                return "getfairy";
+
+            }
+            return "normal";
+
+ 
         }
 
 
@@ -160,6 +236,12 @@ namespace MillionTools.tool1
             {
                 return null;
             }
+        }
+        public string battle(string sid, string userid)
+        {
+            XmlDocument response = GameUtil.dobattle(sid, userid);
+            debugstring = response.SelectSingleNode("/response").InnerXml;
+            return debugstring;
         }
 
     }

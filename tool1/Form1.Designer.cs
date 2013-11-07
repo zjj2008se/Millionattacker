@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textLogin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,12 +45,14 @@
             this.comboBoxfloor = new System.Windows.Forms.ComboBox();
             this.buttonAutoBattle = new System.Windows.Forms.Button();
             this.listViewFairyInfo = new System.Windows.Forms.ListView();
-            this.buttonAutoExplore = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonAutoExplore = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerBattle = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // textLogin
@@ -97,7 +100,7 @@
             // 
             // textBoxoutput
             // 
-            this.textBoxoutput.Location = new System.Drawing.Point(601, 15);
+            this.textBoxoutput.Location = new System.Drawing.Point(682, 16);
             this.textBoxoutput.Multiline = true;
             this.textBoxoutput.Name = "textBoxoutput";
             this.textBoxoutput.ReadOnly = true;
@@ -179,7 +182,7 @@
             // 
             // buttonAutoBattle
             // 
-            this.buttonAutoBattle.Location = new System.Drawing.Point(11, 248);
+            this.buttonAutoBattle.Location = new System.Drawing.Point(12, 281);
             this.buttonAutoBattle.Name = "buttonAutoBattle";
             this.buttonAutoBattle.Size = new System.Drawing.Size(75, 27);
             this.buttonAutoBattle.TabIndex = 14;
@@ -200,19 +203,10 @@
             this.listViewFairyInfo.Location = new System.Drawing.Point(247, 16);
             this.listViewFairyInfo.MultiSelect = false;
             this.listViewFairyInfo.Name = "listViewFairyInfo";
-            this.listViewFairyInfo.Size = new System.Drawing.Size(339, 292);
+            this.listViewFairyInfo.Size = new System.Drawing.Size(370, 292);
             this.listViewFairyInfo.TabIndex = 15;
             this.listViewFairyInfo.UseCompatibleStateImageBehavior = false;
             this.listViewFairyInfo.View = System.Windows.Forms.View.Details;
-            // 
-            // buttonAutoExplore
-            // 
-            this.buttonAutoExplore.Location = new System.Drawing.Point(170, 250);
-            this.buttonAutoExplore.Name = "buttonAutoExplore";
-            this.buttonAutoExplore.Size = new System.Drawing.Size(71, 22);
-            this.buttonAutoExplore.TabIndex = 16;
-            this.buttonAutoExplore.Text = "自动跑图";
-            this.buttonAutoExplore.UseVisualStyleBackColor = true;
             // 
             // columnHeader1
             // 
@@ -234,6 +228,25 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "存活";
+            // 
+            // buttonAutoExplore
+            // 
+            this.buttonAutoExplore.Location = new System.Drawing.Point(170, 281);
+            this.buttonAutoExplore.Name = "buttonAutoExplore";
+            this.buttonAutoExplore.Size = new System.Drawing.Size(71, 27);
+            this.buttonAutoExplore.TabIndex = 16;
+            this.buttonAutoExplore.Text = "自动跑图";
+            this.buttonAutoExplore.UseVisualStyleBackColor = true;
+            this.buttonAutoExplore.Click += new System.EventHandler(this.buttonAutoExplore_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timerBattle
+            // 
+            this.timerBattle.Interval = 5000;
             // 
             // Form1
             // 
@@ -288,6 +301,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerBattle;
     }
 }
 

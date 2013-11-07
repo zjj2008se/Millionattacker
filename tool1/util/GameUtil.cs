@@ -9,25 +9,21 @@ namespace MillionTools.tool1
 {
     class GameUtil
     {
-        private string login_id = "";
-        private string password = "";
         public bool islogin = false;
-
-
-        public void setlogin(string loginid,string password) 
-        {
-            this.login_id = loginid;
-            this.password = password;
-
-        }
-        private int connect(IDictionary<string,string> data, string url)
+        public string loginid;
+        public string password;
+        public string code;
+        public string message;
+        private XmlDocument connect(IDictionary<string, string> data, string url)
         {
             XmlDocument check = null;
             string errorcode = null;
             if (this.islogin == false)
             {
-                check = login();
+                check = login(loginid,password);
+                islogin = true;
                 errorcode = geterrorcode(check);
+                connect(data,url);
             }
             else
             {
@@ -36,35 +32,49 @@ namespace MillionTools.tool1
             }
 
             switch (errorcode){
-                case "1":
+                case "9000":
+                    islogin = false;
+                    connect(data, url);
                 break;
-                case "2":
+                case "-1":
+                    islogin = false;
+                    connect(data, url);
                 break;
             }
             if (errorcode == "") { 
 
             }
 
-            return 0;
+            return check;
         }
 
         private string geterrorcode(XmlDocument data)
         {
-            return null;
-
-        
+            string code=null;
+            try
+            {
+                XmlNodeList response = data.SelectNodes("/response/header/error/code");
+                code = response.Item(0).InnerText;
+            }
+            catch 
+            {
+                code = null;
+            }
+            return code;
         }
 
 
         HttpUtil post = new HttpUtil();
-        public XmlDocument login() {
+        public XmlDocument login(string login_id,string password) {
             string url = "/connect/app/login?cyt=1";
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("", "");
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
-            parameters.Add("login_id", "15099797743");
-            parameters.Add("password", "qwertyuiop");
+            this.loginid = login_id;
+            this.password = password;
+            parameters.Add("login_id", login_id);
+            parameters.Add("password", password);
             /*
             parameters.Add("login_id", login_id);
             parameters.Add("password", password);
@@ -81,14 +91,17 @@ namespace MillionTools.tool1
         public string returnreslut() {
             return post.response1;
         }
-        public XmlDocument explore()
+        public XmlDocument explore(string areaid, string floor)
         {
-            string url = "/connect/app/exploration/area?cyt=1";
+            string url = "/connect/app/exploration/explore?cyt=1";
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("", "");
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
-            XmlDocument resposnse = post.post(parameters, url);
+            parameters.Add("area_id", areaid);
+            parameters.Add("floor_id", floor);
+            parameters.Add("auto_build", "1");
+            XmlDocument resposnse = connect(parameters, url);
 
             return resposnse;
         }
@@ -110,7 +123,7 @@ namespace MillionTools.tool1
             dictionary.Add("", "");
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
-            XmlDocument response = post.post(parameters, url);
+            XmlDocument response = connect(parameters, url);
             return response;
         }
         public XmlDocument getfloor(string id)
@@ -121,7 +134,7 @@ namespace MillionTools.tool1
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
             parameters.Add("area_id", id);
-            XmlDocument response = post.post(parameters, url);
+            XmlDocument response = connect(parameters, url);
             return response;
         
         }
@@ -132,7 +145,19 @@ namespace MillionTools.tool1
             dictionary.Add("", "");
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
-            XmlDocument response = post.post(parameters, url);
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument dobattle(string sid, string userid) 
+        {
+            string url = "/connect/app/exploration/fairybattle?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("serial_id", sid);
+            parameters.Add("user_id", userid);
+            XmlDocument response = connect(parameters, url);
             return response;
         }
     

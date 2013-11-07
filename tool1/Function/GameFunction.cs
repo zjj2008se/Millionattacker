@@ -32,43 +32,57 @@ namespace MillionTools.tool1
         {
             AreaList arealist = new AreaList();
             XmlDocument response = GameUtil.getarealist();
-            XmlNodeList nodelist = response.SelectNodes(
-                "/response/body/exploration_area/area_info_list/area_info");
-           
-            foreach (XmlNode child in nodelist)
+            try
             {
-                debugstring = child.InnerText;
+                XmlNodeList nodelist = response.SelectNodes(
+                    "/response/body/exploration_area/area_info_list/area_info");
+
+                foreach (XmlNode child in nodelist)
+                {
+                    debugstring = child.InnerText;
 
                     Area area = new Area();
-                    
+
                     area.Areaid = child["id"].InnerText;
                     area.AreaName = child["name"].InnerText;
                     area.AreaProg = child["prog_area"].InnerText;
                     area.CardProg = child["prog_item"].InnerText;
                     area.AreaType = child["area_type"].InnerText;
                     arealist.arealist.Add(area);
+                }
+                return arealist;
             }
-
-
-            return arealist;
+            catch (System.NullReferenceException)
+            {
+                return getarealist();
+            }
         }
+
+
         public FloorList getfloorlist(string id) 
         {
             FloorList floorlist = new FloorList();
             XmlDocument response = GameUtil.getfloor(id);
-            XmlNodeList nodelist = response.SelectNodes(
-               "/response/body/exploration_floor/floor_info_list/floor_info");
-
-            foreach (XmlNode child in nodelist)
+            try
             {
-                Areafloor floor = new Areafloor();
-                floor.id = child["id"].InnerText;
-                floor.cost = child["cost"].InnerText;
-                floor.prog = child["progress"].InnerText;
-                floorlist.floorlist.Add(floor);
-                debugstring = child.InnerText;
+                XmlNodeList nodelist = response.SelectNodes(
+                   "/response/body/exploration_floor/floor_info_list/floor_info");
+
+                foreach (XmlNode child in nodelist)
+                {
+                    Areafloor floor = new Areafloor();
+                    floor.id = child["id"].InnerText;
+                    floor.cost = child["cost"].InnerText;
+                    floor.prog = child["progress"].InnerText;
+                    floorlist.floorlist.Add(floor);
+                    debugstring = child.InnerText;
+                }
+                return floorlist;
             }
-            return floorlist;
+            catch (System.NullReferenceException) 
+            {
+                return getfloorlist(id);
+            }
         }
 
 
@@ -144,13 +158,14 @@ namespace MillionTools.tool1
                     }
                     fariyinit = true;
                 }
+                return list;
             }
             catch (System.NullReferenceException)
             {
                 int code = geterrorcode(response);
-
+                return getFairyInfo();
             }
-            return list;
+           
         }
 
         public string getdebugstring() 
@@ -196,22 +211,27 @@ namespace MillionTools.tool1
         public string explore(string areaid ,string floor)
         {
             XmlDocument response = GameUtil.explore(areaid , floor);
-            debugstring = response.SelectSingleNode("/response").InnerXml;
-            if (response.SelectSingleNode("/response/body/explore/event_type").InnerText == "1")
+            try
             {
-                FairyInfo info = new FairyInfo();
-                this.ishavefairy = true;
-                info.FairyName = response.SelectSingleNode("/response/body/explore/fairy/name").InnerText;
-                info.LV = response.SelectSingleNode("/response/body/explore/fairy/lv").InnerText;
-                info.OwnerID = nowinfo.playerid;
-                info.OwnerName = nowinfo.PlayerName;
-                list.List.Add(info);
-                return "getfairy";
+                debugstring = response.SelectSingleNode("/response").InnerXml;
+                if (response.SelectSingleNode("/response/body/explore/event_type").InnerText == "1")
+                {
+                    FairyInfo info = new FairyInfo();
+                    this.ishavefairy = true;
+                    info.FairyName = response.SelectSingleNode("/response/body/explore/fairy/name").InnerText;
+                    info.LV = response.SelectSingleNode("/response/body/explore/fairy/lv").InnerText;
+                    info.OwnerID = nowinfo.playerid;
+                    info.OwnerName = nowinfo.PlayerName;
+                    list.List.Add(info);
+                    return "getfairy";
 
+                }
+                return "normal";
             }
-            return "normal";
-
- 
+            catch (System.NullReferenceException) 
+            {
+                return explore(areaid, floor);
+            }
         }
 
 
@@ -240,8 +260,16 @@ namespace MillionTools.tool1
         public string battle(string sid, string userid)
         {
             XmlDocument response = GameUtil.dobattle(sid, userid);
-            debugstring = response.SelectSingleNode("/response").InnerXml;
-            return debugstring;
+            try
+            {
+                debugstring = response.SelectSingleNode("/response").InnerXml;
+                return debugstring;
+            }
+            catch (System.NullReferenceException)
+            {
+                return battle(sid, userid);
+            }
+                    
         }
 
     }

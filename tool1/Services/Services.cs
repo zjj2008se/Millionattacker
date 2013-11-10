@@ -14,13 +14,13 @@ namespace MillionTools.tool1
         FloorList floor = new FloorList();
         FairyList fairylist = new FairyList();
         PlayerInfo info = new PlayerInfo();
-        public string debugstring = "";
-        public string areaid = null;
-        public string floorid = null;
-        bool isexlpore = false;
-        bool ishavafairy = false;
-        bool isdeckfull = false;
-        bool isouttermode = false;
+        public  string debugstring = "";
+        public  string areaid = null;
+        public  string floorid = null;
+         bool isexlpore = false;
+         bool ishavafairy = false;
+         bool isdeckfull = false;
+         bool isouttermode = false;
 
 
         public FairyList updateFairyInfo()
@@ -35,6 +35,11 @@ namespace MillionTools.tool1
                 if (fairylist.List[i].OwnerID == info.playerid && fairylist.List[i].IsAlive == true)
                 {
                     checkfairy = true;
+                    break;
+                }
+                else
+                {
+                    checkfairy = false;
                 }
 
             }

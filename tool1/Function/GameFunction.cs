@@ -100,41 +100,49 @@ namespace MillionTools.tool1
                 if (fariyinit == true)
                 {
                     int count2 = list.List.Count;
-                        for (int i = 0; i < count; i++)
+                    for (int i = 0; i < count; i++)
+                    {
+                        bool issame = false;
+                        for (int j = 0; j < count2; j++)
                         {
-                            bool issame = false;
-                            for (int j = 0; j < count2; j++)
+                            if (list.List[j].sid == nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText &&
+                                list.List[j].LV == nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText)
                             {
-
-                                if (list.List[j].sid == nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText &&
-                                    list.List[j].LV == nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText)
-                                {
-                                    issame = true;
-                                    break;
-                                }
-                            }
-                            if (issame == false)
-                            {
-                                FairyInfo info = new FairyInfo();
-                                info.OwnerName = nodelist.Item(i).SelectSingleNode("user/name").InnerText;
-                                info.OwnerID = nodelist.Item(i).SelectSingleNode("user/id").InnerText;
-                                info.FairyName = nodelist.Item(i).SelectSingleNode("fairy/name").InnerText;
-                                info.LV = nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText;
-                                info.sid = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
-                                info.IsAttack = false;
                                 if (nodelist.Item(i).SelectSingleNode("put_down").InnerText == "1")
                                 {
-                                    info.IsAlive = true;
+                                    list.List[j].IsAlive = true;
                                 }
                                 else
                                 {
-                                    info.IsAlive = false;
+                                    list.List[j].IsAlive = false;
                                 }
-                                debugstring = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
-                                list.List.Add(info);
+                                issame = true;
+                                break;
                             }
+                        }
+                        if(issame == false)
+                        {
+                            FairyInfo info = new FairyInfo();
+                            info.OwnerName = nodelist.Item(i).SelectSingleNode("user/name").InnerText;
+                            info.OwnerID = nodelist.Item(i).SelectSingleNode("user/id").InnerText;
+                            info.FairyName = nodelist.Item(i).SelectSingleNode("fairy/name").InnerText;
+                            info.LV = nodelist.Item(i).SelectSingleNode("fairy/lv").InnerText;
+                            info.sid = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
+                            info.IsAttack = false;
+                            if (nodelist.Item(i).SelectSingleNode("put_down").InnerText == "1")
+                            {
+                                info.IsAlive = true;
+                            }
+                            else
+                            {
+                                info.IsAlive = false;
+                            }
+                            debugstring = nodelist.Item(i).SelectSingleNode("fairy/serial_id").InnerText;
+                            list.List.Add(info);
+                        }
                     }
                 }
+                
                 if(fariyinit == false)                {
                     for (int i = 0; i < count; i++)
                     {

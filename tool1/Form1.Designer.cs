@@ -294,7 +294,7 @@
             this.Controls.Add(this.textLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "无名亚瑟";
+            this.Text = "无名亚瑟 v0.1";
             this.ResumeLayout(false);
             this.PerformLayout();
 

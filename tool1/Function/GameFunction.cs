@@ -223,8 +223,13 @@ namespace MillionTools.tool1
                     info.OwnerID = nowinfo.playerid;
                     info.OwnerName = nowinfo.PlayerName;
                     list.List.Add(info);
+                    ishavefairy = true;
                     return "getfairy";
-
+                    
+                }
+                if (geterrorcode(response) == 8000) 
+                {
+                    return "deckfull";
                 }
                 return "normal";
             }
@@ -257,13 +262,37 @@ namespace MillionTools.tool1
                 return null;
             }
         }
-        public string battle(string sid, string userid)
+        public battlereslut battle(string sid, string userid)
         {
+            battlereslut reslut = new battlereslut();
             XmlDocument response = GameUtil.dobattle(sid, userid);
             try
             {
+                if (geterrorcode(response) == 0) 
+                {
+                    reslut.haveerror = false;
+                }
+                if (geterrorcode(response) == 1010)
+                {
+                    reslut.haveerror = true;
+                    reslut.errorcode = 1010;
+                    reslut.message = geterrormessage(response);
+
+                }
+                if (geterrorcode(response) == 1050)
+                {
+                    reslut.haveerror = true;
+                    reslut.errorcode = 1010;
+                    reslut.message = geterrormessage(response);
+                }
+                if (geterrorcode(response) == 8000)
+                {
+                    reslut.haveerror = true;
+                    reslut.errorcode = 8000;
+                    reslut.message = geterrormessage(response);
+                }
                 debugstring = response.SelectSingleNode("/response").InnerXml;
-                return debugstring;
+                return reslut;
             }
             catch (System.NullReferenceException)
             {

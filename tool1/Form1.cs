@@ -15,13 +15,14 @@ namespace WindowsFormsApplication1
         Services updater = new Services();
         PlayerInfo playerinfo = new PlayerInfo();
         bool autoBattle = false;
-
+        bool autoExplore = false;
         GameFunction Action = new GameFunction();
         AreaList area = new AreaList();
         FloorList floor = new FloorList();
         string aid;
         public string floorid = null;
         public string debugstring = null;
+        bool Outtermode = false;
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +31,21 @@ namespace WindowsFormsApplication1
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            
-            updater.setting("15099757550", "qwertyuiop");
-            updatePlayerInfo();
-            updateArea();
-            //updateList();
-            textBoxoutput.Text = Action.getdebugstring();
-            timer1.Start();
+            if (textLogin.Text != "" && textPassword.Text != "")
+            {
+                updater.settingLogin(textLogin.Text, textPassword.Text);
+                //updater.settingLogin("15099757550", "qwertyuiop");
+                updatePlayerInfo();
+                textBoxoutput.Text = Action.getdebugstring();
+                updateArea();
+                //updateList();
+                buttonAutoBattle.Enabled = true;
+                timer1.Start();
+            }
+            else 
+            {
+                MessageBox.Show("请输入用户名和密码");
+            }
         }
 
         private void comboBoxAreaList_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,31 +67,50 @@ namespace WindowsFormsApplication1
             {
                 this.floorid = ((ComboxItem)comboBoxfloor.SelectedItem).Value.ToString();
                 textBoxoutput.Text = this.floorid;
+                buttonAutoExplore.Enabled = true;
             }
         }
 
         private void buttonAutoBattle_Click(object sender, EventArgs e)
-        {/*
+        {
+
             if (autoBattle == false)
             {
                 timerBattle.Start();
                 buttonAutoBattle.Text = "停止";
                 autoBattle = true;
+                buttonAutoBattle.Refresh();
             }
-            if (autoBattle == true)
+            else
             {
                 timerBattle.Stop();
                 buttonAutoBattle.Text = "自动战斗";
+                autoBattle = false;
+                buttonAutoBattle.Refresh();
             }
-            */
+            
             updateList();
             textBoxoutput.Text = updater.FairyBattle();
         }
 
         private void buttonAutoExplore_Click(object sender, EventArgs e)
         {
-            updater.explore(aid, floorid);
-            textBoxoutput.Text = updater.debugstring;
+            if (autoExplore == false)
+            {
+                timerExplore.Start();
+                buttonAutoExplore.Text = "停止";
+                autoExplore = true;
+                buttonAutoExplore.Refresh();
+            }
+            else 
+            {
+                timerExplore.Stop();
+                buttonAutoExplore.Text = "自动探索";
+                autoExplore = false;
+                buttonAutoExplore.Refresh();
+            }
+            //updater.explore(aid, floorid);
+            //textBoxoutput.Text = updater.debugstring;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -90,7 +118,8 @@ namespace WindowsFormsApplication1
             updateList();
             //updateArea();
             updatePlayerInfo();
-            updateFloor();
+            //updateFloor();
+            //updateList();
         }
        private void updateList()
        {
@@ -99,29 +128,32 @@ namespace WindowsFormsApplication1
            int count = list.List.Count;
            for (int i = 0; i < count; i++)
            {
-               ListViewItem item = new ListViewItem();
-               item.SubItems.Clear();
-               item.SubItems[0].Text = list.List[i].FairyName;
-               item.SubItems.Add(list.List[i].LV);
-               item.SubItems.Add(list.List[i].OwnerName);
-               if (list.List[i].IsAttack == true)
-               {
-                   item.SubItems.Add("是");
-               }
-               else
-               {
-                   item.SubItems.Add("否");
-               }
                if (list.List[i].IsAlive == true)
                {
-                   item.SubItems.Add("是");
+                   ListViewItem item = new ListViewItem();
+                   item.SubItems.Clear();
+                   item.SubItems[0].Text = list.List[i].FairyName;
+                   item.SubItems.Add(list.List[i].LV);
+                   item.SubItems.Add(list.List[i].OwnerName);
+                   if (list.List[i].IsAttack == true)
+                   {
+                       item.SubItems.Add("是");
+                   }
+                   else
+                   {
+                       item.SubItems.Add("否");
+                   }
+                   if (list.List[i].IsAlive == true)
+                   {
+                       item.SubItems.Add("是");
+                   }
+                   else
+                   {
+                       item.SubItems.Add("否");
+                   }
+                   //item.SubItems.Add(list.List[i].OwnerID);
+                   listViewFairyInfo.Items.Add(item);
                }
-               else
-               {
-                   item.SubItems.Add("否");
-               }
-               //item.SubItems.Add(list.List[i].OwnerID);
-               listViewFairyInfo.Items.Add(item);
            }
            listViewFairyInfo.EndUpdate();
        }
@@ -149,6 +181,10 @@ namespace WindowsFormsApplication1
            labelAP.Text = "AP:  " + playerinfo.NowAP + "/" + playerinfo.MaxAP.ToString();
            labelBC.Text = "BC:  " + playerinfo.NowBC + "/" + playerinfo.MaxBC.ToString();
            labelGold.Text = "金钱： " + playerinfo.gold;
+           labelPlayerName.Refresh();
+           labelAP.Refresh();
+           labelBC.Refresh();
+           labelGold.Refresh();
        }
        private void updateFloor() 
        {
@@ -167,6 +203,21 @@ namespace WindowsFormsApplication1
                    comboBoxfloor.Items.Add(flooritem);
                }
            }
+       }
+
+       private void timerBattle_Tick(object sender, EventArgs e)
+       {
+           updater.FairyBattle();
+       }
+
+       private void timerExplore_Tick(object sender, EventArgs e)
+       {
+           updater.explore(aid,floorid);
+       }
+
+       private void checkBoxOutterMode_CheckedChanged(object sender, EventArgs e)
+       {
+           updater.settingpolicy(checkBoxOutterMode.Checked);
        }
 
     }

@@ -1,9 +1,12 @@
 E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe.config
-E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.exe
-E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.pdb
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.pdb
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.Properties.Resources.resources
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.csproj.GenerateResource.Cache
-E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe
-E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.pdb
-E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.csprojResolveAssemblyReference.cache
+E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.exe
+E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.pdb
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe.manifest
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.application
+E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.exe.manifest
+E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.application

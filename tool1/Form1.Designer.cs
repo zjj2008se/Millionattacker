@@ -53,6 +53,8 @@
             this.buttonAutoExplore = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerBattle = new System.Windows.Forms.Timer(this.components);
+            this.timerExplore = new System.Windows.Forms.Timer(this.components);
+            this.checkBoxOutterMode = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textLogin
@@ -100,7 +102,7 @@
             // 
             // textBoxoutput
             // 
-            this.textBoxoutput.Location = new System.Drawing.Point(682, 16);
+            this.textBoxoutput.Location = new System.Drawing.Point(573, 16);
             this.textBoxoutput.Multiline = true;
             this.textBoxoutput.Name = "textBoxoutput";
             this.textBoxoutput.ReadOnly = true;
@@ -182,6 +184,7 @@
             // 
             // buttonAutoBattle
             // 
+            this.buttonAutoBattle.Enabled = false;
             this.buttonAutoBattle.Location = new System.Drawing.Point(12, 281);
             this.buttonAutoBattle.Name = "buttonAutoBattle";
             this.buttonAutoBattle.Size = new System.Drawing.Size(75, 27);
@@ -203,7 +206,7 @@
             this.listViewFairyInfo.Location = new System.Drawing.Point(247, 16);
             this.listViewFairyInfo.MultiSelect = false;
             this.listViewFairyInfo.Name = "listViewFairyInfo";
-            this.listViewFairyInfo.Size = new System.Drawing.Size(370, 292);
+            this.listViewFairyInfo.Size = new System.Drawing.Size(310, 292);
             this.listViewFairyInfo.TabIndex = 15;
             this.listViewFairyInfo.UseCompatibleStateImageBehavior = false;
             this.listViewFairyInfo.View = System.Windows.Forms.View.Details;
@@ -231,6 +234,7 @@
             // 
             // buttonAutoExplore
             // 
+            this.buttonAutoExplore.Enabled = false;
             this.buttonAutoExplore.Location = new System.Drawing.Point(170, 281);
             this.buttonAutoExplore.Name = "buttonAutoExplore";
             this.buttonAutoExplore.Size = new System.Drawing.Size(71, 27);
@@ -241,18 +245,36 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 10000;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timerBattle
             // 
             this.timerBattle.Interval = 5000;
+            this.timerBattle.Tick += new System.EventHandler(this.timerBattle_Tick);
+            // 
+            // timerExplore
+            // 
+            this.timerExplore.Interval = 3000;
+            this.timerExplore.Tick += new System.EventHandler(this.timerExplore_Tick);
+            // 
+            // checkBoxOutterMode
+            // 
+            this.checkBoxOutterMode.AutoSize = true;
+            this.checkBoxOutterMode.Location = new System.Drawing.Point(15, 241);
+            this.checkBoxOutterMode.Name = "checkBoxOutterMode";
+            this.checkBoxOutterMode.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxOutterMode.TabIndex = 17;
+            this.checkBoxOutterMode.Text = "小号模式";
+            this.checkBoxOutterMode.UseVisualStyleBackColor = true;
+            this.checkBoxOutterMode.CheckedChanged += new System.EventHandler(this.checkBoxOutterMode_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 320);
+            this.ClientSize = new System.Drawing.Size(566, 320);
+            this.Controls.Add(this.checkBoxOutterMode);
             this.Controls.Add(this.buttonAutoExplore);
             this.Controls.Add(this.listViewFairyInfo);
             this.Controls.Add(this.buttonAutoBattle);
@@ -270,6 +292,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "无名亚瑟";
             this.ResumeLayout(false);
@@ -303,6 +326,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timerBattle;
+        private System.Windows.Forms.Timer timerExplore;
+        private System.Windows.Forms.CheckBox checkBoxOutterMode;
     }
 }
 

@@ -55,6 +55,13 @@
             this.timerBattle = new System.Windows.Forms.Timer(this.components);
             this.timerExplore = new System.Windows.Forms.Timer(this.components);
             this.checkBoxOutterMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxBCrecovery = new System.Windows.Forms.CheckBox();
+            this.checkBoxAPrecovery = new System.Windows.Forms.CheckBox();
+            this.buttonAPRecovery = new System.Windows.Forms.Button();
+            this.buttonBCRecovery = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.攻击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textLogin
@@ -92,9 +99,9 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(184, 15);
+            this.buttonLogin.Location = new System.Drawing.Point(184, 12);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(57, 45);
+            this.buttonLogin.Size = new System.Drawing.Size(57, 54);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "登录";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -185,7 +192,7 @@
             // buttonAutoBattle
             // 
             this.buttonAutoBattle.Enabled = false;
-            this.buttonAutoBattle.Location = new System.Drawing.Point(12, 281);
+            this.buttonAutoBattle.Location = new System.Drawing.Point(12, 292);
             this.buttonAutoBattle.Name = "buttonAutoBattle";
             this.buttonAutoBattle.Size = new System.Drawing.Size(75, 27);
             this.buttonAutoBattle.TabIndex = 14;
@@ -206,7 +213,7 @@
             this.listViewFairyInfo.Location = new System.Drawing.Point(247, 16);
             this.listViewFairyInfo.MultiSelect = false;
             this.listViewFairyInfo.Name = "listViewFairyInfo";
-            this.listViewFairyInfo.Size = new System.Drawing.Size(310, 292);
+            this.listViewFairyInfo.Size = new System.Drawing.Size(310, 303);
             this.listViewFairyInfo.TabIndex = 15;
             this.listViewFairyInfo.UseCompatibleStateImageBehavior = false;
             this.listViewFairyInfo.View = System.Windows.Forms.View.Details;
@@ -235,7 +242,7 @@
             // buttonAutoExplore
             // 
             this.buttonAutoExplore.Enabled = false;
-            this.buttonAutoExplore.Location = new System.Drawing.Point(170, 281);
+            this.buttonAutoExplore.Location = new System.Drawing.Point(169, 292);
             this.buttonAutoExplore.Name = "buttonAutoExplore";
             this.buttonAutoExplore.Size = new System.Drawing.Size(71, 27);
             this.buttonAutoExplore.TabIndex = 16;
@@ -261,7 +268,7 @@
             // checkBoxOutterMode
             // 
             this.checkBoxOutterMode.AutoSize = true;
-            this.checkBoxOutterMode.Location = new System.Drawing.Point(15, 241);
+            this.checkBoxOutterMode.Location = new System.Drawing.Point(12, 242);
             this.checkBoxOutterMode.Name = "checkBoxOutterMode";
             this.checkBoxOutterMode.Size = new System.Drawing.Size(72, 16);
             this.checkBoxOutterMode.TabIndex = 17;
@@ -269,11 +276,70 @@
             this.checkBoxOutterMode.UseVisualStyleBackColor = true;
             this.checkBoxOutterMode.CheckedChanged += new System.EventHandler(this.checkBoxOutterMode_CheckedChanged);
             // 
+            // checkBoxBCrecovery
+            // 
+            this.checkBoxBCrecovery.AutoSize = true;
+            this.checkBoxBCrecovery.Location = new System.Drawing.Point(168, 270);
+            this.checkBoxBCrecovery.Name = "checkBoxBCrecovery";
+            this.checkBoxBCrecovery.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxBCrecovery.TabIndex = 18;
+            this.checkBoxBCrecovery.Text = "自动吃红";
+            this.checkBoxBCrecovery.UseVisualStyleBackColor = true;
+            this.checkBoxBCrecovery.CheckedChanged += new System.EventHandler(this.checkBoxBCrecovery_CheckedChanged);
+            // 
+            // checkBoxAPrecovery
+            // 
+            this.checkBoxAPrecovery.AutoSize = true;
+            this.checkBoxAPrecovery.Location = new System.Drawing.Point(168, 242);
+            this.checkBoxAPrecovery.Name = "checkBoxAPrecovery";
+            this.checkBoxAPrecovery.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxAPrecovery.TabIndex = 19;
+            this.checkBoxAPrecovery.Text = "自动吃绿";
+            this.checkBoxAPrecovery.UseVisualStyleBackColor = true;
+            this.checkBoxAPrecovery.CheckedChanged += new System.EventHandler(this.checkBoxAPrecovery_CheckedChanged);
+            // 
+            // buttonAPRecovery
+            // 
+            this.buttonAPRecovery.Location = new System.Drawing.Point(143, 103);
+            this.buttonAPRecovery.Name = "buttonAPRecovery";
+            this.buttonAPRecovery.Size = new System.Drawing.Size(97, 29);
+            this.buttonAPRecovery.TabIndex = 20;
+            this.buttonAPRecovery.Text = "绿茶";
+            this.buttonAPRecovery.UseVisualStyleBackColor = true;
+            this.buttonAPRecovery.Click += new System.EventHandler(this.buttonAPRecovery_Click);
+            // 
+            // buttonBCRecovery
+            // 
+            this.buttonBCRecovery.Location = new System.Drawing.Point(143, 142);
+            this.buttonBCRecovery.Name = "buttonBCRecovery";
+            this.buttonBCRecovery.Size = new System.Drawing.Size(98, 30);
+            this.buttonBCRecovery.TabIndex = 21;
+            this.buttonBCRecovery.Text = "红茶";
+            this.buttonBCRecovery.UseVisualStyleBackColor = true;
+            this.buttonBCRecovery.Click += new System.EventHandler(this.buttonBCRecovery_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.攻击ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // 攻击ToolStripMenuItem
+            // 
+            this.攻击ToolStripMenuItem.Name = "攻击ToolStripMenuItem";
+            this.攻击ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.攻击ToolStripMenuItem.Text = "攻击";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 320);
+            this.ClientSize = new System.Drawing.Size(566, 331);
+            this.Controls.Add(this.buttonBCRecovery);
+            this.Controls.Add(this.buttonAPRecovery);
+            this.Controls.Add(this.checkBoxAPrecovery);
+            this.Controls.Add(this.checkBoxBCrecovery);
             this.Controls.Add(this.checkBoxOutterMode);
             this.Controls.Add(this.buttonAutoExplore);
             this.Controls.Add(this.listViewFairyInfo);
@@ -295,6 +361,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "无名亚瑟 v0.1";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,6 +395,12 @@
         private System.Windows.Forms.Timer timerBattle;
         private System.Windows.Forms.Timer timerExplore;
         private System.Windows.Forms.CheckBox checkBoxOutterMode;
+        private System.Windows.Forms.CheckBox checkBoxBCrecovery;
+        private System.Windows.Forms.CheckBox checkBoxAPrecovery;
+        private System.Windows.Forms.Button buttonAPRecovery;
+        private System.Windows.Forms.Button buttonBCRecovery;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 攻击ToolStripMenuItem;
     }
 }
 

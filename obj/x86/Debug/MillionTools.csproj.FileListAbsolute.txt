@@ -6,7 +6,5 @@ E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.csproj.GenerateResource.Cache
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.exe
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.pdb
-E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe.manifest
-E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.application
-E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.exe.manifest
-E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.application
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe.CodeAnalysisLog.xml
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe.lastcodeanalysissucceeded

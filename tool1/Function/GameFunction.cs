@@ -27,6 +27,10 @@ namespace MillionTools.tool1
             GameUtil.login(gameid, password);
 
         }
+        public void useItem(string itemid) 
+        {
+            GameUtil.Recovery(itemid);
+        }
 
         public AreaList getarealist() 
         {
@@ -206,6 +210,19 @@ namespace MillionTools.tool1
                     "/response/header/your_data/gold").InnerText);
                 nowinfo.playerid = response.SelectSingleNode(
                     "/response/body/login/user_id").InnerText;
+                XmlNodeList node = response.SelectNodes("/response/header/your_data//itemlist");
+                int count = node.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    if (node.Item(i).SelectSingleNode("item_id").InnerText == "1") 
+                    {
+                        nowinfo.itemAP = int.Parse(node.Item(i).SelectSingleNode("num").InnerText);
+                    }
+                    if (node.Item(i).SelectSingleNode("item_id").InnerText == "2")
+                    {
+                        nowinfo.itemBC = int.Parse(node.Item(i).SelectSingleNode("num").InnerText);
+                    }
+                }
                 playerinfo = nowinfo;
             }
             catch(System.NullReferenceException)

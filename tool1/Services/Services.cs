@@ -21,6 +21,8 @@ namespace MillionTools.tool1
          bool ishavafairy = false;
          bool isdeckfull = false;
          bool isouttermode = false;
+         bool isAPRecovery = false;
+         bool isBCRecovery = false;
 
 
         public FairyList updateFairyInfo()
@@ -58,8 +60,22 @@ namespace MillionTools.tool1
         {
             isouttermode = Fairyoutmode;
         }
+        public void settingRecovery(bool AP,bool BC) 
+        {
+            isAPRecovery = AP;
+            isBCRecovery = BC;
+        }
+
         public PlayerInfo updateInfo() 
         {
+            if (isAPRecovery = true && info.NowAP < 4) 
+            {
+                Action.useItem("1");
+            }
+            if (isBCRecovery = true && info.NowBC < 3)
+            {
+                Action.useItem("2");
+            }
             PlayerInfo info1 = new PlayerInfo();
             Action.getPlayerInfo(ref info1);
             this.info = info1;
@@ -162,7 +178,15 @@ namespace MillionTools.tool1
             }
             return reslut;
         }
-    
+
+        public void useAPitem() 
+        {
+            Action.useItem("1");
+        }
+        public void useBCitem() 
+        {
+            Action.useItem("2");
+        }
     }
  }
 

@@ -23,6 +23,8 @@ namespace WindowsFormsApplication1
         public string floorid = null;
         public string debugstring = null;
         bool Outtermode = false;
+        bool useAP = false;
+        bool useBC = false;
         public Form1()
         {
             InitializeComponent();
@@ -119,7 +121,8 @@ namespace WindowsFormsApplication1
             //updateArea();
             updatePlayerInfo();
             //updateFloor();
-            //updateList();
+            //updateList()
+            updater.settingRecovery(useAP, useBC);
         }
        private void updateList()
        {
@@ -181,10 +184,14 @@ namespace WindowsFormsApplication1
            labelAP.Text = "AP:  " + playerinfo.NowAP + "/" + playerinfo.MaxAP.ToString();
            labelBC.Text = "BC:  " + playerinfo.NowBC + "/" + playerinfo.MaxBC.ToString();
            labelGold.Text = "金钱： " + playerinfo.gold;
+           buttonAPRecovery.Text = "绿茶剩余：" + playerinfo.itemAP.ToString();
+           buttonBCRecovery.Text = "红茶剩余：" + playerinfo.itemBC.ToString();
            labelPlayerName.Refresh();
            labelAP.Refresh();
            labelBC.Refresh();
            labelGold.Refresh();
+           buttonAPRecovery.Refresh();
+           buttonBCRecovery.Refresh();
        }
        private void updateFloor() 
        {
@@ -218,6 +225,29 @@ namespace WindowsFormsApplication1
        private void checkBoxOutterMode_CheckedChanged(object sender, EventArgs e)
        {
            updater.settingpolicy(checkBoxOutterMode.Checked);
+       }
+
+       private void buttonAPRecovery_Click(object sender, EventArgs e)
+       {
+           updater.useAPitem();
+           this.updatePlayerInfo();
+       }
+
+       private void buttonBCRecovery_Click(object sender, EventArgs e)
+       {
+           updater.useBCitem();
+           this.updatePlayerInfo();
+       }
+
+       private void checkBoxAPrecovery_CheckedChanged(object sender, EventArgs e)
+       {
+           useAP = checkBoxAPrecovery.Checked;
+          
+       }
+
+       private void checkBoxBCrecovery_CheckedChanged(object sender, EventArgs e)
+       {
+           useBC = checkBoxBCrecovery.Checked;
        }
 
     }

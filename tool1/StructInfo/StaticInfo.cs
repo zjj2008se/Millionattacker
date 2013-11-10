@@ -17,6 +17,8 @@ namespace MillionTools.tool1.StructInfo
        public int gold;
        public bool isOwnFairy;
        public string playerid;
+       public int itemAP;
+       public int itemBC;
       }
 
 	

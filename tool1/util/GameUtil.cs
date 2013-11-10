@@ -160,6 +160,18 @@ namespace MillionTools.tool1
             XmlDocument response = connect(parameters, url);
             return response;
         }
+        public XmlDocument Recovery(string itemid) 
+        {
+            string url = "/connect/app/item/use?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("item_id", itemid);
+            XmlDocument response = connect(parameters, url);
+            return response;
+ 
+        }
     
     }
 }

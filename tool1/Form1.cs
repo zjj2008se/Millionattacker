@@ -250,5 +250,12 @@ namespace WindowsFormsApplication1
            useBC = checkBoxBCrecovery.Checked;
        }
 
+       private void buttonSearchFriend_Click(object sender, EventArgs e)
+       {
+
+       }
+
+
+
     }
 }

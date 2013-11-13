@@ -35,7 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <RunCodeAnalysis>true</RunCodeAnalysis>
@@ -120,6 +120,7 @@
     <Compile Include="tool1\StructInfo\FloorList.cs" />
     <Compile Include="tool1\StructInfo\Setting.cs" />
     <Compile Include="tool1\StructInfo\StaticInfo.cs" />
+    <Compile Include="tool1\util\databaseconnect.cs" />
     <Compile Include="tool1\util\GameUtil.cs" />
     <Compile Include="tool1\util\HttpUtil.cs" />
   </ItemGroup>
@@ -150,6 +151,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

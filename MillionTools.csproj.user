@@ -10,4 +10,7 @@
     <FallbackCulture>zh-CN</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>D:\mytools\1\Millionattacker\lib\</ReferencePath>
+  </PropertyGroup>
 </Project>

@@ -68,11 +68,11 @@ namespace MillionTools.tool1
 
         public PlayerInfo updateInfo() 
         {
-            if (isAPRecovery = true && info.NowAP < 4) 
+            if (isAPRecovery == true && info.NowAP < 4) 
             {
                 Action.useItem("1");
             }
-            if (isBCRecovery = true && info.NowBC < 3)
+            if (isBCRecovery == true && info.NowBC < 3)
             {
                 Action.useItem("2");
             }

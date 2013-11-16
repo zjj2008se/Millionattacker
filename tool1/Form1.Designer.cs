@@ -61,37 +61,44 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStripbattle = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.攻击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlInfomation = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.buttonCurrentFriend = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxFriendName = new System.Windows.Forms.TextBox();
+            this.buttonSearchFriend = new System.Windows.Forms.Button();
+            this.buttonFriendAdd = new System.Windows.Forms.Button();
             this.listViewFriend = new System.Windows.Forms.ListView();
-            this.contextMenuStripbattle = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.攻击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonFriendAdd = new System.Windows.Forms.Button();
-            this.buttonSearchFriend = new System.Windows.Forms.Button();
-            this.textBoxFriendName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.buttonCurrentFriend = new System.Windows.Forms.Button();
             this.contextMenuStripFriend = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除好友ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControlController.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.contextMenuStripbattle.SuspendLayout();
             this.tabControlInfomation.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.contextMenuStripbattle.SuspendLayout();
             this.contextMenuStripFriend.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textLogin
             // 
             this.textLogin.Location = new System.Drawing.Point(57, 6);
             this.textLogin.Name = "textLogin";
-            this.textLogin.Size = new System.Drawing.Size(187, 21);
+            this.textLogin.Size = new System.Drawing.Size(150, 21);
             this.textLogin.TabIndex = 0;
             // 
             // label1
@@ -116,13 +123,13 @@
             // 
             this.textPassword.Location = new System.Drawing.Point(57, 33);
             this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(187, 21);
+            this.textPassword.Size = new System.Drawing.Size(150, 21);
             this.textPassword.TabIndex = 3;
             this.textPassword.UseSystemPasswordChar = true;
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(272, 3);
+            this.buttonLogin.Location = new System.Drawing.Point(228, 3);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(57, 54);
             this.buttonLogin.TabIndex = 4;
@@ -181,7 +188,7 @@
             this.comboBoxAreaList.FormattingEnabled = true;
             this.comboBoxAreaList.Location = new System.Drawing.Point(57, 156);
             this.comboBoxAreaList.Name = "comboBoxAreaList";
-            this.comboBoxAreaList.Size = new System.Drawing.Size(272, 20);
+            this.comboBoxAreaList.Size = new System.Drawing.Size(206, 20);
             this.comboBoxAreaList.TabIndex = 10;
             this.comboBoxAreaList.SelectedIndexChanged += new System.EventHandler(this.comboBoxAreaList_SelectedIndexChanged);
             // 
@@ -208,7 +215,7 @@
             this.comboBoxfloor.FormattingEnabled = true;
             this.comboBoxfloor.Location = new System.Drawing.Point(57, 185);
             this.comboBoxfloor.Name = "comboBoxfloor";
-            this.comboBoxfloor.Size = new System.Drawing.Size(272, 20);
+            this.comboBoxfloor.Size = new System.Drawing.Size(206, 20);
             this.comboBoxfloor.TabIndex = 13;
             this.comboBoxfloor.SelectedIndexChanged += new System.EventHandler(this.comboBoxfloor_SelectedIndexChanged);
             // 
@@ -226,7 +233,7 @@
             // buttonAutoExplore
             // 
             this.buttonAutoExplore.Enabled = false;
-            this.buttonAutoExplore.Location = new System.Drawing.Point(258, 335);
+            this.buttonAutoExplore.Location = new System.Drawing.Point(236, 343);
             this.buttonAutoExplore.Name = "buttonAutoExplore";
             this.buttonAutoExplore.Size = new System.Drawing.Size(71, 27);
             this.buttonAutoExplore.TabIndex = 16;
@@ -252,7 +259,7 @@
             // checkBoxOutterMode
             // 
             this.checkBoxOutterMode.AutoSize = true;
-            this.checkBoxOutterMode.Location = new System.Drawing.Point(7, 304);
+            this.checkBoxOutterMode.Location = new System.Drawing.Point(6, 20);
             this.checkBoxOutterMode.Name = "checkBoxOutterMode";
             this.checkBoxOutterMode.Size = new System.Drawing.Size(72, 16);
             this.checkBoxOutterMode.TabIndex = 17;
@@ -263,7 +270,7 @@
             // checkBoxBCrecovery
             // 
             this.checkBoxBCrecovery.AutoSize = true;
-            this.checkBoxBCrecovery.Location = new System.Drawing.Point(258, 293);
+            this.checkBoxBCrecovery.Location = new System.Drawing.Point(16, 51);
             this.checkBoxBCrecovery.Name = "checkBoxBCrecovery";
             this.checkBoxBCrecovery.Size = new System.Drawing.Size(72, 16);
             this.checkBoxBCrecovery.TabIndex = 18;
@@ -274,7 +281,7 @@
             // checkBoxAPrecovery
             // 
             this.checkBoxAPrecovery.AutoSize = true;
-            this.checkBoxAPrecovery.Location = new System.Drawing.Point(258, 265);
+            this.checkBoxAPrecovery.Location = new System.Drawing.Point(16, 20);
             this.checkBoxAPrecovery.Name = "checkBoxAPrecovery";
             this.checkBoxAPrecovery.Size = new System.Drawing.Size(72, 16);
             this.checkBoxAPrecovery.TabIndex = 19;
@@ -284,7 +291,7 @@
             // 
             // buttonAPRecovery
             // 
-            this.buttonAPRecovery.Location = new System.Drawing.Point(243, 82);
+            this.buttonAPRecovery.Location = new System.Drawing.Point(213, 82);
             this.buttonAPRecovery.Name = "buttonAPRecovery";
             this.buttonAPRecovery.Size = new System.Drawing.Size(97, 29);
             this.buttonAPRecovery.TabIndex = 20;
@@ -294,7 +301,7 @@
             // 
             // buttonBCRecovery
             // 
-            this.buttonBCRecovery.Location = new System.Drawing.Point(242, 117);
+            this.buttonBCRecovery.Location = new System.Drawing.Point(213, 117);
             this.buttonBCRecovery.Name = "buttonBCRecovery";
             this.buttonBCRecovery.Size = new System.Drawing.Size(98, 30);
             this.buttonBCRecovery.TabIndex = 21;
@@ -308,20 +315,20 @@
             this.tabControlController.Location = new System.Drawing.Point(1, 3);
             this.tabControlController.Name = "tabControlController";
             this.tabControlController.SelectedIndex = 0;
-            this.tabControlController.Size = new System.Drawing.Size(354, 402);
+            this.tabControlController.Size = new System.Drawing.Size(321, 402);
             this.tabControlController.TabIndex = 22;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.textLogin);
             this.tabPage1.Controls.Add(this.buttonBCRecovery);
             this.tabPage1.Controls.Add(this.buttonAPRecovery);
             this.tabPage1.Controls.Add(this.textPassword);
-            this.tabPage1.Controls.Add(this.checkBoxAPrecovery);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.checkBoxBCrecovery);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.checkBoxOutterMode);
             this.tabPage1.Controls.Add(this.buttonLogin);
             this.tabPage1.Controls.Add(this.buttonAutoExplore);
             this.tabPage1.Controls.Add(this.labelPlayerName);
@@ -333,10 +340,10 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.comboBoxAreaList);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(346, 377);
+            this.tabPage1.Size = new System.Drawing.Size(313, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "常规";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -385,11 +392,24 @@
             this.columnHeader5.Text = "存活";
             this.columnHeader5.Width = 66;
             // 
+            // contextMenuStripbattle
+            // 
+            this.contextMenuStripbattle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.攻击ToolStripMenuItem});
+            this.contextMenuStripbattle.Name = "contextMenuStripbattle";
+            this.contextMenuStripbattle.Size = new System.Drawing.Size(99, 26);
+            // 
+            // 攻击ToolStripMenuItem
+            // 
+            this.攻击ToolStripMenuItem.Name = "攻击ToolStripMenuItem";
+            this.攻击ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.攻击ToolStripMenuItem.Text = "攻击";
+            // 
             // tabControlInfomation
             // 
             this.tabControlInfomation.Controls.Add(this.tabPage3);
             this.tabControlInfomation.Controls.Add(this.tabPage4);
-            this.tabControlInfomation.Location = new System.Drawing.Point(361, 3);
+            this.tabControlInfomation.Location = new System.Drawing.Point(328, 3);
             this.tabControlInfomation.Name = "tabControlInfomation";
             this.tabControlInfomation.SelectedIndex = 0;
             this.tabControlInfomation.Size = new System.Drawing.Size(472, 402);
@@ -398,10 +418,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.listViewFairyInfo);
-            this.tabPage3.Location = new System.Drawing.Point(4, 21);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(464, 377);
+            this.tabPage3.Size = new System.Drawing.Size(464, 376);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "妖精信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -414,13 +434,57 @@
             this.tabPage4.Controls.Add(this.buttonSearchFriend);
             this.tabPage4.Controls.Add(this.buttonFriendAdd);
             this.tabPage4.Controls.Add(this.listViewFriend);
-            this.tabPage4.Location = new System.Drawing.Point(4, 21);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(464, 377);
+            this.tabPage4.Size = new System.Drawing.Size(464, 376);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "好友信息";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // buttonCurrentFriend
+            // 
+            this.buttonCurrentFriend.Location = new System.Drawing.Point(8, 336);
+            this.buttonCurrentFriend.Name = "buttonCurrentFriend";
+            this.buttonCurrentFriend.Size = new System.Drawing.Size(104, 23);
+            this.buttonCurrentFriend.TabIndex = 5;
+            this.buttonCurrentFriend.Text = "当前好友";
+            this.buttonCurrentFriend.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "好友名称：";
+            // 
+            // textBoxFriendName
+            // 
+            this.textBoxFriendName.Location = new System.Drawing.Point(73, 8);
+            this.textBoxFriendName.Name = "textBoxFriendName";
+            this.textBoxFriendName.Size = new System.Drawing.Size(232, 21);
+            this.textBoxFriendName.TabIndex = 3;
+            // 
+            // buttonSearchFriend
+            // 
+            this.buttonSearchFriend.Location = new System.Drawing.Point(311, 8);
+            this.buttonSearchFriend.Name = "buttonSearchFriend";
+            this.buttonSearchFriend.Size = new System.Drawing.Size(78, 23);
+            this.buttonSearchFriend.TabIndex = 2;
+            this.buttonSearchFriend.Text = "搜索好友";
+            this.buttonSearchFriend.UseVisualStyleBackColor = true;
+            this.buttonSearchFriend.Click += new System.EventHandler(this.buttonSearchFriend_Click);
+            // 
+            // buttonFriendAdd
+            // 
+            this.buttonFriendAdd.Location = new System.Drawing.Point(380, 336);
+            this.buttonFriendAdd.Name = "buttonFriendAdd";
+            this.buttonFriendAdd.Size = new System.Drawing.Size(78, 23);
+            this.buttonFriendAdd.TabIndex = 1;
+            this.buttonFriendAdd.Text = "添加好友";
+            this.buttonFriendAdd.UseVisualStyleBackColor = true;
             // 
             // listViewFriend
             // 
@@ -437,19 +501,6 @@
             this.listViewFriend.TabIndex = 0;
             this.listViewFriend.UseCompatibleStateImageBehavior = false;
             this.listViewFriend.View = System.Windows.Forms.View.Details;
-            // 
-            // contextMenuStripbattle
-            // 
-            this.contextMenuStripbattle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.攻击ToolStripMenuItem});
-            this.contextMenuStripbattle.Name = "contextMenuStripbattle";
-            this.contextMenuStripbattle.Size = new System.Drawing.Size(95, 26);
-            // 
-            // 攻击ToolStripMenuItem
-            // 
-            this.攻击ToolStripMenuItem.Name = "攻击ToolStripMenuItem";
-            this.攻击ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.攻击ToolStripMenuItem.Text = "攻击";
             // 
             // columnHeader6
             // 
@@ -470,83 +521,75 @@
             this.columnHeader9.Text = "用户id";
             this.columnHeader9.Width = 80;
             // 
-            // buttonFriendAdd
-            // 
-            this.buttonFriendAdd.Location = new System.Drawing.Point(380, 336);
-            this.buttonFriendAdd.Name = "buttonFriendAdd";
-            this.buttonFriendAdd.Size = new System.Drawing.Size(78, 23);
-            this.buttonFriendAdd.TabIndex = 1;
-            this.buttonFriendAdd.Text = "添加好友";
-            this.buttonFriendAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonSearchFriend
-            // 
-            this.buttonSearchFriend.Location = new System.Drawing.Point(311, 8);
-            this.buttonSearchFriend.Name = "buttonSearchFriend";
-            this.buttonSearchFriend.Size = new System.Drawing.Size(78, 23);
-            this.buttonSearchFriend.TabIndex = 2;
-            this.buttonSearchFriend.Text = "搜索好友";
-            this.buttonSearchFriend.UseVisualStyleBackColor = true;
-            this.buttonSearchFriend.Click += new System.EventHandler(this.buttonSearchFriend_Click);
-            // 
-            // textBoxFriendName
-            // 
-            this.textBoxFriendName.Location = new System.Drawing.Point(73, 8);
-            this.textBoxFriendName.Name = "textBoxFriendName";
-            this.textBoxFriendName.Size = new System.Drawing.Size(232, 21);
-            this.textBoxFriendName.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "好友名称：";
-            // 
-            // buttonCurrentFriend
-            // 
-            this.buttonCurrentFriend.Location = new System.Drawing.Point(8, 336);
-            this.buttonCurrentFriend.Name = "buttonCurrentFriend";
-            this.buttonCurrentFriend.Size = new System.Drawing.Size(104, 23);
-            this.buttonCurrentFriend.TabIndex = 5;
-            this.buttonCurrentFriend.Text = "当前好友";
-            this.buttonCurrentFriend.UseVisualStyleBackColor = true;
-            // 
             // contextMenuStripFriend
             // 
             this.contextMenuStripFriend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.删除好友ToolStripMenuItem});
             this.contextMenuStripFriend.Name = "contextMenuStripFriend";
-            this.contextMenuStripFriend.Size = new System.Drawing.Size(119, 26);
+            this.contextMenuStripFriend.Size = new System.Drawing.Size(123, 26);
             // 
             // 删除好友ToolStripMenuItem
             // 
             this.删除好友ToolStripMenuItem.Name = "删除好友ToolStripMenuItem";
-            this.删除好友ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.删除好友ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.删除好友ToolStripMenuItem.Text = "删除好友";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBoxAPrecovery);
+            this.groupBox1.Controls.Add(this.checkBoxBCrecovery);
+            this.groupBox1.Location = new System.Drawing.Point(206, 263);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(101, 74);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "吃药模式";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(8, 215);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(302, 42);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "跑图模式";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBoxOutterMode);
+            this.groupBox3.Location = new System.Drawing.Point(8, 263);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(86, 75);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "战斗模式";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 407);
+            this.ClientSize = new System.Drawing.Size(803, 407);
             this.Controls.Add(this.tabControlInfomation);
             this.Controls.Add(this.tabControlController);
             this.Controls.Add(this.textBoxoutput);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "无名亚瑟 v0.1";
+            this.Text = "无名亚瑟 v0.2";
             this.tabControlController.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.contextMenuStripbattle.ResumeLayout(false);
             this.tabControlInfomation.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.contextMenuStripbattle.ResumeLayout(false);
             this.contextMenuStripFriend.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,6 +646,11 @@
         private System.Windows.Forms.Button buttonCurrentFriend;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFriend;
         private System.Windows.Forms.ToolStripMenuItem 删除好友ToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

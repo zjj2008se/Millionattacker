@@ -4,16 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using MillionTools.tool1.util;
+using System.Net;
+using System.Net.Security;
 
 namespace MillionTools.tool1
 {
     class GameUtil
     {
+        HttpUtil post = new HttpUtil();
         public bool islogin = false;
         public string loginid;
         public string password;
         public string code;
         public string message;
+        private CookieCollection cookies = new CookieCollection();
         private XmlDocument connect(IDictionary<string, string> data, string url)
         {
             XmlDocument check = null;
@@ -27,22 +31,14 @@ namespace MillionTools.tool1
             }
             else
             {
-                check = post.post(data, url);
+                check = post.post(data, url,cookies);
                 errorcode = geterrorcode(check);
             }
 
-            switch (errorcode){
-                case "9000":
-                    islogin = false;
-                    connect(data, url);
-                break;
-                case "-1":
-                    islogin = false;
-                    connect(data, url);
-                break;
-            }
-            if (errorcode == "") { 
-
+            if (errorcode == "9000")
+            {
+                islogin = false;
+                connect(data, url);
             }
 
             return check;
@@ -64,7 +60,7 @@ namespace MillionTools.tool1
         }
 
 
-        HttpUtil post = new HttpUtil();
+        
         public XmlDocument login(string login_id,string password) {
             string url = "/connect/app/login?cyt=1";
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -75,16 +71,9 @@ namespace MillionTools.tool1
             this.password = password;
             parameters.Add("login_id", login_id);
             parameters.Add("password", password);
-            /*
-            parameters.Add("login_id", login_id);
-            parameters.Add("password", password);
-             */
-            
-            
             XmlDocument document = null;
-            document = post.post(parameters,url);
-            //XmlNode node = document.SelectSingleNode("/response/header/session_id");
-            //post.s = node.InnerText;
+            document = post.post(parameters,url,cookies);
+            cookies = post.cookies;
             return document;
          
         }
@@ -114,7 +103,7 @@ namespace MillionTools.tool1
             dictionary.Add("", "");
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
-            XmlDocument resposnse = post.post(parameters, url);
+            XmlDocument resposnse = connect(parameters, url);
             return resposnse;
         }
         public XmlDocument getPlayerInfo() {

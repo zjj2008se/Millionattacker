@@ -22,10 +22,9 @@ namespace MillionTools.tool1.util
         private String UA = "Million/101 (GT-I9100; GT-I9100; 2.3.4) samsung/GT-I9100/GT-I9100:2.3.4/GRJ22/eng.build.20120314.185218:eng/release-keys";
         private String domain = "web.million-arthurs.com";
         private string key = "rBwj1MIAivVN222b";
-        CookieCollection cookies = new CookieCollection();
+        public CookieCollection cookies = new CookieCollection();
         public string s = null;
         public string response1 = null;
-        public bool islogin = false;
         private IDictionary<string, string> docrypt(IDictionary<string, string> data)
         {
             if (data == null)
@@ -65,7 +64,7 @@ namespace MillionTools.tool1.util
             }
         }
 
-        public XmlDocument post(IDictionary<String, String> data, string exurl) 
+        public XmlDocument post(IDictionary<String, String> data, string exurl, CookieCollection cookies0) 
         {
             try
             {
@@ -75,12 +74,6 @@ namespace MillionTools.tool1.util
                 postdata.Clear();
                 postdata = docrypt(data);
                 String url = baseurl + exurl;
-                if (cookies == null)
-                {
-                    Cookie cookie2 = new Cookie("S", s);
-                    Cookie cookie = cookie2;
-                }
-
                 Encoding encoding;
                 if (string.IsNullOrEmpty(url))
                 {
@@ -96,11 +89,10 @@ namespace MillionTools.tool1.util
                 request.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
                 request.KeepAlive = true;
                 request.Timeout = 0xc350;
-
-                if (cookies != null)
+                if (cookies0 != null)
                 {
                     request.CookieContainer = new CookieContainer();
-                    request.CookieContainer.Add(cookies);
+                    request.CookieContainer.Add(cookies0);
                 }
                 request.Expect = null;
                 StringBuilder builder = new StringBuilder();
@@ -139,14 +131,8 @@ namespace MillionTools.tool1.util
 
                 }
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                if (islogin == false)
-                {
-                    cookies = response.Cookies;
-                    islogin = true;
-                    
-                }
+                cookies = response.Cookies; 
                 Stream responseStream = response.GetResponseStream();
-
                 byte[] buffer = new byte[4096];
                 byte[] result;
                 using (MemoryStream memoryStream = new MemoryStream())
@@ -162,7 +148,6 @@ namespace MillionTools.tool1.util
                     result = memoryStream.ToArray();
 
                 }
-
                 response.Close();
                 XmlDocument document = new XmlDocument();
                 response1 = decrypt(result);
@@ -171,18 +156,11 @@ namespace MillionTools.tool1.util
             }
             catch (System.Net.WebException) 
             {
-                return post(data, exurl);
+                return post(data, exurl,cookies0);
             }
             
         }
 
-        private string decrypt(string data) {
-            
-            
-            
-            return null;
-        }
-        
         private string decrypt(byte[] data)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(key);

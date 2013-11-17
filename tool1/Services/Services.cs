@@ -14,16 +14,18 @@ namespace MillionTools.tool1
         FloorList floor = new FloorList();
         FairyList fairylist = new FairyList();
         PlayerInfo info = new PlayerInfo();
+        FriendList friend = new FriendList();
         public  string debugstring = "";
         public  string areaid = null;
         public  string floorid = null;
+        public bool isTW = false;
          bool isexlpore = false;
          bool ishavafairy = false;
          bool isdeckfull = false;
          bool isouttermode = false;
          bool isAPRecovery = false;
          bool isBCRecovery = false;
-
+         
 
         public FairyList updateFairyInfo()
         {
@@ -65,6 +67,11 @@ namespace MillionTools.tool1
             isAPRecovery = AP;
             isBCRecovery = BC;
         }
+        public void settingServer(bool TWorCN) 
+        {
+            isTW = TWorCN;
+            Action.selectServer(isTW);
+        }
 
         public PlayerInfo updateInfo() 
         {
@@ -85,6 +92,21 @@ namespace MillionTools.tool1
         {
             area = Action.getarealist();
             return area;
+        }
+        public FriendList updatefriendlist() 
+        {
+            friend = Action.getFriendlist();
+            return friend;
+        }
+        public FriendList updateApprovefriendlist()
+        {
+            friend = Action.getApproveFriendlist();
+            return friend;
+        }
+        public FriendList searchfriend(string name)
+        {
+            friend = Action.searchfriend(name);
+            return friend;
         }
         public FloorList updatefloor(string areaid) 
         {

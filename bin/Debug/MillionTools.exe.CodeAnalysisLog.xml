@@ -12,15 +12,15 @@
          <Members>
           <Member Name="#decrypt(System.Byte[])" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-16 06:04:47Z" FixCategory="DependsOnFix">
-             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="188">在方法 'HttpUtil.decrypt(byte[])' 中，请在对 '&lt;&gt;g__initLocal1' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-17 12:49:49Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="182">在方法 'HttpUtil.decrypt(byte[])' 中，请在对 '&lt;&gt;g__initLocal1' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Encypt(System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-16 06:04:47Z" FixCategory="DependsOnFix">
-             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="50">在方法 'HttpUtil.Encypt(string)' 中，请在对 '&lt;&gt;g__initLocal0' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-17 12:49:49Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="52">在方法 'HttpUtil.Encypt(string)' 中，请在对 '&lt;&gt;g__initLocal0' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
             </Message>
            </Messages>
           </Member>

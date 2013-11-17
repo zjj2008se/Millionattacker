@@ -17,6 +17,7 @@ namespace MillionTools.tool1
         public string password;
         public string code;
         public string message;
+        public bool isTW;
         private CookieCollection cookies = new CookieCollection();
         private XmlDocument connect(IDictionary<string, string> data, string url)
         {
@@ -24,14 +25,14 @@ namespace MillionTools.tool1
             string errorcode = null;
             if (this.islogin == false)
             {
-                check = login(loginid,password);
+                check = login();
                 islogin = true;
                 errorcode = geterrorcode(check);
                 connect(data,url);
             }
             else
             {
-                check = post.post(data, url,cookies);
+                check = post.post(data, url,cookies,isTW);
                 errorcode = geterrorcode(check);
             }
 
@@ -61,18 +62,16 @@ namespace MillionTools.tool1
 
 
         
-        public XmlDocument login(string login_id,string password) {
+        public XmlDocument login() {
             string url = "/connect/app/login?cyt=1";
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("", "");
             IDictionary<string, string> parameters = dictionary;
             parameters.Clear();
-            this.loginid = login_id;
-            this.password = password;
-            parameters.Add("login_id", login_id);
-            parameters.Add("password", password);
+            parameters.Add("login_id", this.loginid);
+            parameters.Add("password", this.password);
             XmlDocument document = null;
-            document = post.post(parameters,url,cookies);
+            document = post.post(parameters,url,cookies,isTW);
             cookies = post.cookies;
             return document;
          
@@ -94,8 +93,6 @@ namespace MillionTools.tool1
 
             return resposnse;
         }
-
-
         public XmlDocument getarealist()
         {
             string url = "/connect/app/exploration/area?cyt=1";
@@ -161,6 +158,74 @@ namespace MillionTools.tool1
             return response;
  
         }
-    
+        public XmlDocument getFriendList()
+        {
+            string url = "/connect/app/menu/friendlist?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("move", "0");
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument getFrienApprovedList()
+        {
+            string url = "/connect/app/menu/friend_notice?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("move", "0");
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument searchfriend(string name)
+        {
+            string url = "/connect/app/menu/player_search?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("name", name);
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument deletefriend(string id)
+        {
+            string url = "/connect/app/friend/remove_friend?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("dialog", "1");
+            parameters.Add("user_id", id);
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument addfriend(string id)
+        {
+            string url = "/connect/app/friend/add_friend?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("dialog", "1");
+            parameters.Add("user_id", id);
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument approvefriend(string id)
+        {
+            string url = "/connect/app/friend/approve_friend?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("user_id", id);
+            parameters.Add("dialog", "1");
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
     }
 }

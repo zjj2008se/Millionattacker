@@ -15,6 +15,7 @@ namespace MillionTools.tool1
         string debugstring = "";
         bool ishavefairy = false;
         bool fariyinit = false;
+        bool serverTW = false;
         private string gameid;
         private string password;
         public FairyList list = new FairyList();
@@ -24,12 +25,19 @@ namespace MillionTools.tool1
         public void login(string login_id, string password1) {
             gameid = login_id;
             password = password1;
-            GameUtil.login(gameid, password);
+            GameUtil.loginid = gameid;
+            GameUtil.password = password;
+            GameUtil.login();
 
         }
         public void useItem(string itemid) 
         {
             GameUtil.Recovery(itemid);
+        }
+        public void selectServer(bool TWorCN)
+        {
+            serverTW = TWorCN;
+            GameUtil.isTW = serverTW;
         }
 
         public AreaList getarealist() 
@@ -93,8 +101,6 @@ namespace MillionTools.tool1
         public FairyList getFairyInfo() {
             
             XmlDocument response = GameUtil.getfairylist();
-
-            //debugstring = response.OuterXml;
             try
             {
                 XmlNodeList nodelist = response.SelectNodes(
@@ -285,6 +291,88 @@ namespace MillionTools.tool1
             catch 
             {
                 return null;
+            }
+        }
+
+        public FriendList getFriendlist()
+        {
+            FriendList friendlist = new FriendList();
+            XmlDocument response = GameUtil.getFriendList();
+            try
+            {
+                XmlNodeList nodelist = response.SelectNodes(
+                    "/response/body/friend_list/user");
+
+                foreach (XmlNode child in nodelist)
+                {
+                    debugstring = child.InnerText;
+                    FriendInfo friend = new FriendInfo();
+                    friend.Name = child["name"].InnerText;
+                    friend.ID = child["id"].InnerText;
+                    friend.LV = child["town_level"].InnerText;
+                    friend.MaxFriend = child["friend_max"].InnerText;
+                    friend.CurrentFriend = child["friends"].InnerText;
+                    friendlist.friendlist.Add(friend);
+                }
+                return friendlist;
+            }
+            catch (System.NullReferenceException)
+            {
+                return getFriendlist();
+            }
+        }
+        public FriendList getApproveFriendlist()
+        {
+            FriendList friendlist = new FriendList();
+            XmlDocument response = GameUtil.getFrienApprovedList();
+            try
+            {
+                XmlNodeList nodelist = response.SelectNodes(
+                    "/response/body/friend_notice/user_list/user");
+
+                foreach (XmlNode child in nodelist)
+                {
+                    debugstring = child.InnerText;
+                    FriendInfo friend = new FriendInfo();
+                    friend.Name = child["name"].InnerText;
+                    friend.ID = child["id"].InnerText;
+                    friend.LV = child["town_level"].InnerText;
+                    friend.MaxFriend = child["friend_max"].InnerText;
+                    friend.CurrentFriend = child["friends"].InnerText;
+                    friendlist.friendlist.Add(friend);
+                }
+                return friendlist;
+            }
+            catch (System.NullReferenceException)
+            {
+                return getFriendlist();
+            }
+        }
+        public FriendList searchfriend(string name)
+        {
+            FriendList friendlist = new FriendList();
+            XmlDocument response = GameUtil.searchfriend(name);
+            try
+            {
+                XmlNodeList nodelist = response.SelectNodes(
+                    "/response/body/player_search/user_list/user");
+
+                foreach (XmlNode child in nodelist)
+                {
+                    debugstring = child.InnerText;
+                    FriendInfo friend = new FriendInfo();
+                    friend.Name = child["name"].InnerText;
+                    friend.ID = child["id"].InnerText;
+                    friend.LV = child["town_level"].InnerText;
+                    friend.MaxFriend = child["friend_max"].InnerText;
+                    friend.CurrentFriend = child["friends"].InnerText;
+                    friendlist.friendlist.Add(friend);
+                }
+                return friendlist;
+            }
+            catch (System.NullReferenceException)
+            {
+                return searchfriend(name);
             }
         }
         public battlereslut battle(string sid, string userid)

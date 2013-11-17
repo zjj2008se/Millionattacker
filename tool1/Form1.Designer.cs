@@ -55,6 +55,9 @@
             this.buttonBCRecovery = new System.Windows.Forms.Button();
             this.tabControlController = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listViewFairyInfo = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -78,27 +81,32 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripFriend = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除好友ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timerUI = new System.Windows.Forms.Timer(this.components);
+            this.buttonApproveList = new System.Windows.Forms.Button();
+            this.buttonApproveFriend = new System.Windows.Forms.Button();
             this.tabControlController.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.contextMenuStripbattle.SuspendLayout();
             this.tabControlInfomation.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.contextMenuStripFriend.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textLogin
             // 
             this.textLogin.Location = new System.Drawing.Point(57, 6);
             this.textLogin.Name = "textLogin";
-            this.textLogin.Size = new System.Drawing.Size(150, 21);
+            this.textLogin.Size = new System.Drawing.Size(116, 21);
             this.textLogin.TabIndex = 0;
             // 
             // label1
@@ -123,13 +131,13 @@
             // 
             this.textPassword.Location = new System.Drawing.Point(57, 33);
             this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(150, 21);
+            this.textPassword.Size = new System.Drawing.Size(116, 21);
             this.textPassword.TabIndex = 3;
             this.textPassword.UseSystemPasswordChar = true;
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(228, 3);
+            this.buttonLogin.Location = new System.Drawing.Point(250, 6);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(57, 54);
             this.buttonLogin.TabIndex = 4;
@@ -320,6 +328,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -348,6 +357,36 @@
             this.tabPage1.Text = "常规";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBoxOutterMode);
+            this.groupBox3.Location = new System.Drawing.Point(8, 263);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(86, 75);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "战斗模式";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(8, 215);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(302, 42);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "跑图模式";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBoxAPrecovery);
+            this.groupBox1.Controls.Add(this.checkBoxBCrecovery);
+            this.groupBox1.Location = new System.Drawing.Point(206, 263);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(101, 74);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "吃药模式";
+            // 
             // listViewFairyInfo
             // 
             this.listViewFairyInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -356,7 +395,6 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listViewFairyInfo.ContextMenuStrip = this.contextMenuStripbattle;
             this.listViewFairyInfo.FullRowSelect = true;
             this.listViewFairyInfo.GridLines = true;
             this.listViewFairyInfo.Location = new System.Drawing.Point(0, 0);
@@ -366,6 +404,7 @@
             this.listViewFairyInfo.TabIndex = 15;
             this.listViewFairyInfo.UseCompatibleStateImageBehavior = false;
             this.listViewFairyInfo.View = System.Windows.Forms.View.Details;
+            this.listViewFairyInfo.SelectedIndexChanged += new System.EventHandler(this.listViewFairyInfo_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -428,6 +467,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.buttonApproveFriend);
+            this.tabPage4.Controls.Add(this.buttonApproveList);
             this.tabPage4.Controls.Add(this.buttonCurrentFriend);
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.textBoxFriendName);
@@ -444,12 +485,13 @@
             // 
             // buttonCurrentFriend
             // 
-            this.buttonCurrentFriend.Location = new System.Drawing.Point(8, 336);
+            this.buttonCurrentFriend.Location = new System.Drawing.Point(395, 9);
             this.buttonCurrentFriend.Name = "buttonCurrentFriend";
-            this.buttonCurrentFriend.Size = new System.Drawing.Size(104, 23);
+            this.buttonCurrentFriend.Size = new System.Drawing.Size(63, 23);
             this.buttonCurrentFriend.TabIndex = 5;
             this.buttonCurrentFriend.Text = "当前好友";
             this.buttonCurrentFriend.UseVisualStyleBackColor = true;
+            this.buttonCurrentFriend.Click += new System.EventHandler(this.buttonCurrentFriend_Click);
             // 
             // label5
             // 
@@ -462,14 +504,14 @@
             // 
             // textBoxFriendName
             // 
-            this.textBoxFriendName.Location = new System.Drawing.Point(73, 8);
+            this.textBoxFriendName.Location = new System.Drawing.Point(71, 8);
             this.textBoxFriendName.Name = "textBoxFriendName";
-            this.textBoxFriendName.Size = new System.Drawing.Size(232, 21);
+            this.textBoxFriendName.Size = new System.Drawing.Size(137, 21);
             this.textBoxFriendName.TabIndex = 3;
             // 
             // buttonSearchFriend
             // 
-            this.buttonSearchFriend.Location = new System.Drawing.Point(311, 8);
+            this.buttonSearchFriend.Location = new System.Drawing.Point(214, 9);
             this.buttonSearchFriend.Name = "buttonSearchFriend";
             this.buttonSearchFriend.Size = new System.Drawing.Size(78, 23);
             this.buttonSearchFriend.TabIndex = 2;
@@ -483,7 +525,7 @@
             this.buttonFriendAdd.Name = "buttonFriendAdd";
             this.buttonFriendAdd.Size = new System.Drawing.Size(78, 23);
             this.buttonFriendAdd.TabIndex = 1;
-            this.buttonFriendAdd.Text = "添加好友";
+            this.buttonFriendAdd.Text = "发送申请";
             this.buttonFriendAdd.UseVisualStyleBackColor = true;
             // 
             // listViewFriend
@@ -494,6 +536,7 @@
             this.columnHeader8,
             this.columnHeader9});
             this.listViewFriend.ContextMenuStrip = this.contextMenuStripFriend;
+            this.listViewFriend.FullRowSelect = true;
             this.listViewFriend.GridLines = true;
             this.listViewFriend.Location = new System.Drawing.Point(6, 35);
             this.listViewFriend.Name = "listViewFriend";
@@ -501,6 +544,7 @@
             this.listViewFriend.TabIndex = 0;
             this.listViewFriend.UseCompatibleStateImageBehavior = false;
             this.listViewFriend.View = System.Windows.Forms.View.Details;
+            this.listViewFriend.SelectedIndexChanged += new System.EventHandler(this.listViewFriend_SelectedIndexChanged);
             // 
             // columnHeader6
             // 
@@ -534,35 +578,67 @@
             this.删除好友ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.删除好友ToolStripMenuItem.Text = "删除好友";
             // 
-            // groupBox1
+            // backgroundWorker1
             // 
-            this.groupBox1.Controls.Add(this.checkBoxAPrecovery);
-            this.groupBox1.Controls.Add(this.checkBoxBCrecovery);
-            this.groupBox1.Location = new System.Drawing.Point(206, 263);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(101, 74);
-            this.groupBox1.TabIndex = 22;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "吃药模式";
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // groupBox2
+            // radioButton1
             // 
-            this.groupBox2.Location = new System.Drawing.Point(8, 215);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 42);
-            this.groupBox2.TabIndex = 23;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "跑图模式";
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(3, 5);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(47, 16);
+            this.radioButton1.TabIndex = 25;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "国服";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // groupBox3
+            // radioButton2
             // 
-            this.groupBox3.Controls.Add(this.checkBoxOutterMode);
-            this.groupBox3.Location = new System.Drawing.Point(8, 263);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(86, 75);
-            this.groupBox3.TabIndex = 24;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "战斗模式";
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.radioButton2.Location = new System.Drawing.Point(3, 30);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(47, 16);
+            this.radioButton2.TabIndex = 26;
+            this.radioButton2.Text = "台服";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Location = new System.Drawing.Point(179, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(53, 54);
+            this.panel1.TabIndex = 27;
+            // 
+            // timerUI
+            // 
+            this.timerUI.Interval = 5000;
+            this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
+            // 
+            // buttonApproveList
+            // 
+            this.buttonApproveList.Location = new System.Drawing.Point(298, 9);
+            this.buttonApproveList.Name = "buttonApproveList";
+            this.buttonApproveList.Size = new System.Drawing.Size(91, 23);
+            this.buttonApproveList.TabIndex = 6;
+            this.buttonApproveList.Text = "接受申请列表";
+            this.buttonApproveList.UseVisualStyleBackColor = true;
+            this.buttonApproveList.Click += new System.EventHandler(this.buttonApproveList_Click);
+            // 
+            // buttonApproveFriend
+            // 
+            this.buttonApproveFriend.Location = new System.Drawing.Point(8, 336);
+            this.buttonApproveFriend.Name = "buttonApproveFriend";
+            this.buttonApproveFriend.Size = new System.Drawing.Size(78, 23);
+            this.buttonApproveFriend.TabIndex = 7;
+            this.buttonApproveFriend.Text = "允许好友";
+            this.buttonApproveFriend.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -580,16 +656,18 @@
             this.tabControlController.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.contextMenuStripbattle.ResumeLayout(false);
             this.tabControlInfomation.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.contextMenuStripFriend.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,6 +729,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timerUI;
+        private System.Windows.Forms.Button buttonApproveList;
+        private System.Windows.Forms.Button buttonApproveFriend;
     }
 }
 

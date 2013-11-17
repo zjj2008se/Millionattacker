@@ -19,12 +19,15 @@ namespace MillionTools.tool1.util
     class HttpUtil
     {
         private String baseurl = "http://game1-cbt.ma.sdo.com:10001";
-        private String UA = "Million/101 (GT-I9100; GT-I9100; 2.3.4) samsung/GT-I9100/GT-I9100:2.3.4/GRJ22/eng.build.20120314.185218:eng/release-keys";
-        private String domain = "web.million-arthurs.com";
+        private string TWurl = "http://game.ma.mobimon.com.tw:10001";
+        private String UA1 = "Million/101 (GT-I9100; GT-I9100; 2.3.4) samsung/GT-I9100/GT-I9100:2.3.4/GRJ22/eng.build.20120314.185218:eng/release-keys";
+        private String UATW = "Million/102 (GT-I9100; GT-I9100; 2.3.4) samsung/GT-I9100/GT-I9100:2.3.4/GRJ22/eng.build.20120314.185218:eng/release-keys";
+        //private String domain = "web.million-arthurs.com";
         private string key = "rBwj1MIAivVN222b";
         public CookieCollection cookies = new CookieCollection();
         public string s = null;
         public string response1 = null;
+        public bool TWorCN = false;
         private IDictionary<string, string> docrypt(IDictionary<string, string> data)
         {
             if (data == null)
@@ -64,7 +67,7 @@ namespace MillionTools.tool1.util
             }
         }
 
-        public XmlDocument post(IDictionary<String, String> data, string exurl, CookieCollection cookies0) 
+        public XmlDocument post(IDictionary<String, String> data, string exurl, CookieCollection cookies0, bool isTW) 
         {
             try
             {
@@ -73,8 +76,20 @@ namespace MillionTools.tool1.util
                 IDictionary<string, string> postdata = dictionary;
                 postdata.Clear();
                 postdata = docrypt(data);
-                String url = baseurl + exurl;
+                String url = null;
+                string UA =null;
                 Encoding encoding;
+                if (isTW == false)
+                {
+                    url = baseurl + exurl;
+                    UA = UA1;
+
+                }
+                else 
+                {
+                    url = TWurl + exurl;
+                    UA = UATW;
+                }
                 if (string.IsNullOrEmpty(url))
                 {
                     throw new ArgumentNullException("url");
@@ -156,7 +171,7 @@ namespace MillionTools.tool1.util
             }
             catch (System.Net.WebException) 
             {
-                return post(data, exurl,cookies0);
+                return post(data, exurl,cookies0,isTW);
             }
             
         }

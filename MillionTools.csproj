@@ -125,6 +125,8 @@
     <Compile Include="tool1\StructInfo\FairyInfo.cs" />
     <Compile Include="tool1\StructInfo\FairyList.cs" />
     <Compile Include="tool1\StructInfo\FloorList.cs" />
+    <Compile Include="tool1\StructInfo\FriendInfo.cs" />
+    <Compile Include="tool1\StructInfo\FriendList.cs" />
     <Compile Include="tool1\StructInfo\Setting.cs" />
     <Compile Include="tool1\StructInfo\StaticInfo.cs" />
     <Compile Include="tool1\util\databaseconnect.cs" />

@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="e:\program files (x86)\microsoft visual studio 10.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="10.0">
  <Targets>
-  <Target Name="E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe">
+  <Target Name="E:\HAmmer\WindowsFormsApplication1\bin\Release\MillionTools.exe">
    <Modules>
     <Module Name="milliontools.exe">
      <Namespaces>
@@ -12,14 +12,14 @@
          <Members>
           <Member Name="#decrypt(System.Byte[])" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-28 16:21:27Z" FixCategory="DependsOnFix">
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-28 15:13:29Z" FixCategory="DependsOnFix">
              <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="182">在方法 'HttpUtil.decrypt(byte[])' 中，请在对 '&lt;&gt;g__initLocal1' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Encypt(System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-28 16:21:27Z" FixCategory="DependsOnFix">
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-11-28 15:13:29Z" FixCategory="DependsOnFix">
              <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="52">在方法 'HttpUtil.Encypt(string)' 中，请在对 '&lt;&gt;g__initLocal0' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
             </Message>
            </Messages>

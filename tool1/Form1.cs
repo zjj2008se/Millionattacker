@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1
         bool useAP = false;
         bool useBC = false;
         bool TWorCN = false;
+        bool swPVP = false;
+        int pvplimit = 0;
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +47,7 @@ namespace WindowsFormsApplication1
                 //updateArea();
                 //updateList();
                 buttonAutoBattle.Enabled = true;
+                buttonpvpbattle.Enabled = true;
                 timer1.Start();
                 timerUI.Start();
             }
@@ -199,12 +202,12 @@ namespace WindowsFormsApplication1
            labelGold.Text = "金钱： " + playerinfo.gold;
            buttonAPRecovery.Text = "绿茶剩余：" + playerinfo.itemAP.ToString();
            buttonBCRecovery.Text = "红茶剩余：" + playerinfo.itemBC.ToString();
-           labelPlayerName.Refresh();
-           labelAP.Refresh();
-           labelBC.Refresh();
-           labelGold.Refresh();
-           buttonAPRecovery.Refresh();
-           buttonBCRecovery.Refresh();
+           labelPlayerName.Update();
+           labelAP.Update();
+           labelBC.Update();
+           labelGold.Update();
+           buttonAPRecovery.Update();
+           buttonBCRecovery.Update();
        }
        private void updateFloor() 
        {
@@ -340,6 +343,37 @@ namespace WindowsFormsApplication1
            FriendList friend = new FriendList();
            friend = updater.updateApprovefriendlist();
            updateFriend(friend);
+       }
+
+       private void buttonpvpbattle_Click(object sender, EventArgs e)
+       {
+           if (swPVP == false)
+           {
+               buttonpvpbattle.Text = "停止";
+               swPVP = true;
+               timerpvp.Start();
+           }
+           else
+           {
+               buttonpvpbattle.Text = "开始PVP";
+               swPVP = false;
+               timerpvp.Stop();
+           }
+
+       }
+
+       private void timerpvp_Tick(object sender, EventArgs e)
+       {
+           int limit = 0;
+           if (textBoxlimitBC.Text == "")
+           {
+               limit = 1;
+           }
+           else 
+           {
+               limit =  int.Parse(textBoxlimitBC.Text);
+           }
+           updater.PVP(limit);
        }
 
 

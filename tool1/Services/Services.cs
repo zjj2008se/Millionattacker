@@ -209,6 +209,10 @@ namespace MillionTools.tool1
         {
             Action.useItem("2");
         }
+        public void PVP(int limit)
+        {
+            Action.pvpbattle(limit);
+        }
     }
  }
 

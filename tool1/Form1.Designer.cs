@@ -55,6 +55,9 @@
             this.buttonBCRecovery = new System.Windows.Forms.Button();
             this.tabControlController = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -69,6 +72,8 @@
             this.tabControlInfomation = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.buttonApproveFriend = new System.Windows.Forms.Button();
+            this.buttonApproveList = new System.Windows.Forms.Button();
             this.buttonCurrentFriend = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxFriendName = new System.Windows.Forms.TextBox();
@@ -83,15 +88,17 @@
             this.删除好友ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timerUI = new System.Windows.Forms.Timer(this.components);
-            this.buttonApproveList = new System.Windows.Forms.Button();
-            this.buttonApproveFriend = new System.Windows.Forms.Button();
+            this.buttonpvpbattle = new System.Windows.Forms.Button();
+            this.timerpvp = new System.Windows.Forms.Timer(this.components);
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxlimitBC = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControlController.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.contextMenuStripbattle.SuspendLayout();
@@ -99,7 +106,7 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.contextMenuStripFriend.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textLogin
@@ -320,6 +327,7 @@
             // tabControlController
             // 
             this.tabControlController.Controls.Add(this.tabPage1);
+            this.tabControlController.Controls.Add(this.tabPage2);
             this.tabControlController.Location = new System.Drawing.Point(1, 3);
             this.tabControlController.Name = "tabControlController";
             this.tabControlController.SelectedIndex = 0;
@@ -356,6 +364,40 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "常规";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Location = new System.Drawing.Point(179, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(53, 54);
+            this.panel1.TabIndex = 27;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(3, 5);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(47, 16);
+            this.radioButton1.TabIndex = 25;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "国服";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.radioButton2.Location = new System.Drawing.Point(3, 30);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(47, 16);
+            this.radioButton2.TabIndex = 26;
+            this.radioButton2.Text = "台服";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -483,6 +525,25 @@
             this.tabPage4.Text = "好友信息";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // buttonApproveFriend
+            // 
+            this.buttonApproveFriend.Location = new System.Drawing.Point(8, 336);
+            this.buttonApproveFriend.Name = "buttonApproveFriend";
+            this.buttonApproveFriend.Size = new System.Drawing.Size(78, 23);
+            this.buttonApproveFriend.TabIndex = 7;
+            this.buttonApproveFriend.Text = "允许好友";
+            this.buttonApproveFriend.UseVisualStyleBackColor = true;
+            // 
+            // buttonApproveList
+            // 
+            this.buttonApproveList.Location = new System.Drawing.Point(298, 9);
+            this.buttonApproveList.Name = "buttonApproveList";
+            this.buttonApproveList.Size = new System.Drawing.Size(91, 23);
+            this.buttonApproveList.TabIndex = 6;
+            this.buttonApproveList.Text = "接受申请列表";
+            this.buttonApproveList.UseVisualStyleBackColor = true;
+            this.buttonApproveList.Click += new System.EventHandler(this.buttonApproveList_Click);
+            // 
             // buttonCurrentFriend
             // 
             this.buttonCurrentFriend.Location = new System.Drawing.Point(395, 9);
@@ -582,63 +643,65 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 5);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 25;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "国服";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.radioButton2.Location = new System.Drawing.Point(3, 30);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 26;
-            this.radioButton2.Text = "台服";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Location = new System.Drawing.Point(179, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(53, 54);
-            this.panel1.TabIndex = 27;
-            // 
             // timerUI
             // 
             this.timerUI.Interval = 5000;
             this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
             // 
-            // buttonApproveList
+            // buttonpvpbattle
             // 
-            this.buttonApproveList.Location = new System.Drawing.Point(298, 9);
-            this.buttonApproveList.Name = "buttonApproveList";
-            this.buttonApproveList.Size = new System.Drawing.Size(91, 23);
-            this.buttonApproveList.TabIndex = 6;
-            this.buttonApproveList.Text = "接受申请列表";
-            this.buttonApproveList.UseVisualStyleBackColor = true;
-            this.buttonApproveList.Click += new System.EventHandler(this.buttonApproveList_Click);
+            this.buttonpvpbattle.Enabled = false;
+            this.buttonpvpbattle.Location = new System.Drawing.Point(180, 12);
+            this.buttonpvpbattle.Name = "buttonpvpbattle";
+            this.buttonpvpbattle.Size = new System.Drawing.Size(78, 27);
+            this.buttonpvpbattle.TabIndex = 28;
+            this.buttonpvpbattle.Text = "开始pvp";
+            this.buttonpvpbattle.UseVisualStyleBackColor = true;
+            this.buttonpvpbattle.Click += new System.EventHandler(this.buttonpvpbattle_Click);
             // 
-            // buttonApproveFriend
+            // timerpvp
             // 
-            this.buttonApproveFriend.Location = new System.Drawing.Point(8, 336);
-            this.buttonApproveFriend.Name = "buttonApproveFriend";
-            this.buttonApproveFriend.Size = new System.Drawing.Size(78, 23);
-            this.buttonApproveFriend.TabIndex = 7;
-            this.buttonApproveFriend.Text = "允许好友";
-            this.buttonApproveFriend.UseVisualStyleBackColor = true;
+            this.timerpvp.Interval = 60000;
+            this.timerpvp.Tick += new System.EventHandler(this.timerpvp_Tick);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.textBoxlimitBC);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.buttonpvpbattle);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(313, 376);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "PVP排名";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "红茶少于";
+            // 
+            // textBoxlimitBC
+            // 
+            this.textBoxlimitBC.Location = new System.Drawing.Point(66, 15);
+            this.textBoxlimitBC.Name = "textBoxlimitBC";
+            this.textBoxlimitBC.Size = new System.Drawing.Size(49, 21);
+            this.textBoxlimitBC.TabIndex = 31;
+            this.textBoxlimitBC.Text = "1";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(121, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "瓶时停止";
             // 
             // Form1
             // 
@@ -656,6 +719,8 @@
             this.tabControlController.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -666,8 +731,8 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.contextMenuStripFriend.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -736,6 +801,12 @@
         private System.Windows.Forms.Timer timerUI;
         private System.Windows.Forms.Button buttonApproveList;
         private System.Windows.Forms.Button buttonApproveFriend;
+        private System.Windows.Forms.Button buttonpvpbattle;
+        private System.Windows.Forms.Timer timerpvp;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxlimitBC;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -20,6 +20,7 @@ namespace MillionTools.tool1
         private string password;
         public FairyList list = new FairyList();
         public PlayerInfo nowinfo = new PlayerInfo();
+        List<string> battlled_id = new List<string>();
         int items;
 
         public void login(string login_id, string password1) {
@@ -374,6 +375,60 @@ namespace MillionTools.tool1
             {
                 return searchfriend(name);
             }
+        }
+        public void pvpbattle(int limitbc) 
+        {
+            XmlDocument response = GameUtil.searchfriend("无名亚");
+            List<string> id = new List<string>();
+            
+            try
+            {
+                XmlNodeList nodelist = response.SelectNodes(
+                    "/response/body/player_search/user_list/user");
+
+                foreach (XmlNode child in nodelist)
+                {
+                    string id1 = child["id"].InnerText;
+                    int lv = int.Parse(child["town_level"].InnerText);
+                    if (lv < 5)
+                    {
+                        id.Add(id1);
+                    }
+                }
+            }
+            catch (System.NullReferenceException)
+            {
+            }
+            int count = id.Count;
+            for (int i = 0; i < count; i++)
+            {
+                int count2 = battlled_id.Count;
+                bool isbattled = false;
+                for (int j = 0; j < count2; j++)
+                {
+                    if (id[i] == battlled_id[j]) 
+                    {
+                        isbattled = true;
+                    }
+                    
+                }
+                if (isbattled == false)
+                {
+                    if (nowinfo.NowBC > 50)
+                    {
+                        XmlDocument battlereslut = GameUtil.pvpbattle(id[i], "48");
+                        battlled_id.Add(id[i]);
+                    }
+                    else 
+                    {
+                        if (nowinfo.itemBC > limitbc)
+                            useItem("2");
+                    }
+
+                }
+            }
+
+ 
         }
         public battlereslut battle(string sid, string userid)
         {

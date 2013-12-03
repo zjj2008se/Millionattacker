@@ -43,6 +43,7 @@ namespace MillionTools.tool1
 
         public AreaList getarealist() 
         {
+            MessagePackage message = new MessagePackage();
             AreaList arealist = new AreaList();
             XmlDocument response = GameUtil.getarealist();
             try
@@ -53,9 +54,7 @@ namespace MillionTools.tool1
                 foreach (XmlNode child in nodelist)
                 {
                     debugstring = child.InnerText;
-
                     Area area = new Area();
-
                     area.Areaid = child["id"].InnerText;
                     area.AreaName = child["name"].InnerText;
                     area.AreaProg = child["prog_area"].InnerText;
@@ -63,6 +62,7 @@ namespace MillionTools.tool1
                     area.AreaType = child["area_type"].InnerText;
                     arealist.arealist.Add(area);
                 }
+                message.result = arealist;
                 return arealist;
             }
             catch (System.NullReferenceException)

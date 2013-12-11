@@ -55,6 +55,7 @@
             this.buttonBCRecovery = new System.Windows.Forms.Button();
             this.tabControlController = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -96,7 +97,11 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timerUI = new System.Windows.Forms.Timer(this.components);
             this.timerpvp = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.trackBarAutoAttack = new System.Windows.Forms.TrackBar();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControlController.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -108,6 +113,8 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.contextMenuStripFriend.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoAttack)).BeginInit();
             this.SuspendLayout();
             // 
             // textLogin
@@ -329,6 +336,7 @@
             // 
             this.tabControlController.Controls.Add(this.tabPage1);
             this.tabControlController.Controls.Add(this.tabPage2);
+            this.tabControlController.Controls.Add(this.tabPage6);
             this.tabControlController.Location = new System.Drawing.Point(1, 3);
             this.tabControlController.Name = "tabControlController";
             this.tabControlController.SelectedIndex = 0;
@@ -359,13 +367,23 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.comboBoxAreaList);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(313, 377);
+            this.tabPage1.Size = new System.Drawing.Size(313, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "常规";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(120, 344);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(73, 23);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "数据库";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -437,9 +455,9 @@
             this.tabPage2.Controls.Add(this.textBoxlimitBC);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.buttonpvpbattle);
-            this.tabPage2.Location = new System.Drawing.Point(4, 21);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(313, 377);
+            this.tabPage2.Size = new System.Drawing.Size(313, 376);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "PVP排名";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -542,6 +560,7 @@
             // 
             this.tabControlInfomation.Controls.Add(this.tabPage3);
             this.tabControlInfomation.Controls.Add(this.tabPage4);
+            this.tabControlInfomation.Controls.Add(this.tabPage5);
             this.tabControlInfomation.Location = new System.Drawing.Point(328, 3);
             this.tabControlInfomation.Name = "tabControlInfomation";
             this.tabControlInfomation.SelectedIndex = 0;
@@ -551,10 +570,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.listViewFairyInfo);
-            this.tabPage3.Location = new System.Drawing.Point(4, 21);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(464, 377);
+            this.tabPage3.Size = new System.Drawing.Size(464, 376);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "妖精信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -569,10 +588,10 @@
             this.tabPage4.Controls.Add(this.buttonSearchFriend);
             this.tabPage4.Controls.Add(this.buttonFriendAdd);
             this.tabPage4.Controls.Add(this.listViewFriend);
-            this.tabPage4.Location = new System.Drawing.Point(4, 21);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(464, 377);
+            this.tabPage4.Size = new System.Drawing.Size(464, 376);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "好友信息";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -705,15 +724,59 @@
             this.timerpvp.Interval = 60000;
             this.timerpvp.Tick += new System.EventHandler(this.timerpvp_Tick);
             // 
-            // button1
+            // tabPage5
             // 
-            this.button1.Location = new System.Drawing.Point(120, 344);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "数据库";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(464, 376);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "设置卡组";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.label9);
+            this.tabPage6.Controls.Add(this.label8);
+            this.tabPage6.Controls.Add(this.trackBarAutoAttack);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(313, 376);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "自动杀妖";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // trackBarAutoAttack
+            // 
+            this.trackBarAutoAttack.LargeChange = 4;
+            this.trackBarAutoAttack.Location = new System.Drawing.Point(7, 27);
+            this.trackBarAutoAttack.Maximum = 20;
+            this.trackBarAutoAttack.Name = "trackBarAutoAttack";
+            this.trackBarAutoAttack.Size = new System.Drawing.Size(300, 45);
+            this.trackBarAutoAttack.SmallChange = 0;
+            this.trackBarAutoAttack.TabIndex = 0;
+            this.trackBarAutoAttack.TickFrequency = 4;
+            this.trackBarAutoAttack.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarAutoAttack.Value = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(3, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 16);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "省BC";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(254, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 16);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "低傲娇";
             // 
             // Form1
             // 
@@ -745,6 +808,9 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.contextMenuStripFriend.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoAttack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -820,6 +886,11 @@
         private System.Windows.Forms.TextBox textBoxlimitBC;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TrackBar trackBarAutoAttack;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

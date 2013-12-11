@@ -29,3 +29,7 @@ D:\mytools\1\Millionattacker\bin\Debug\Newtonsoft.Json.dll
 D:\mytools\1\Millionattacker\bin\Debug\SQLite.Designer.dll
 D:\mytools\1\Millionattacker\bin\Debug\Newtonsoft.Json.pdb
 D:\mytools\1\Millionattacker\bin\Debug\Newtonsoft.Json.xml
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\SQLite.Designer.dll
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
+E:\HAmmer\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml

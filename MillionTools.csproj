@@ -136,9 +136,11 @@
     <Compile Include="tool1\StructInfo\FloorList.cs" />
     <Compile Include="tool1\StructInfo\FriendInfo.cs" />
     <Compile Include="tool1\StructInfo\FriendList.cs" />
+    <Compile Include="tool1\StructInfo\macard.cs" />
     <Compile Include="tool1\StructInfo\MessagePackage.cs" />
     <Compile Include="tool1\StructInfo\Setting.cs" />
     <Compile Include="tool1\StructInfo\StaticInfo.cs" />
+    <Compile Include="tool1\util\cardreader.cs" />
     <Compile Include="tool1\util\databaseconnect.cs" />
     <Compile Include="tool1\util\GameUtil.cs" />
     <Compile Include="tool1\util\HttpUtil.cs" />

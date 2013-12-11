@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         databaseconnect db = new databaseconnect();
-
+        cardreader cr = new cardreader();
 
         Services updater = new Services();
         PlayerInfo playerinfo = new PlayerInfo();
@@ -383,7 +383,9 @@ namespace WindowsFormsApplication1
        private void button1_Click(object sender, EventArgs e)
        {
            bool test;
+           //cr.reader();
            db.init();
+           MessageBox.Show("OK");
        }
 
 

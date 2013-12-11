@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="e:\program files (x86)\microsoft visual studio 10.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="10.0">
+ <Targets>
+  <Target Name="E:\HAmmer\WindowsFormsApplication1\bin\Debug\MillionTools.exe">
+   <Modules>
+    <Module Name="milliontools.exe">
+     <Namespaces>
+      <Namespace Name="MillionTools.tool1.util">
+       <Types>
+        <Type Name="cardreader" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#reader()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-12-11 13:03:01Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="cardreader.cs" Line="18">在方法 'cardreader.reader()' 中，'srReadFile' 对象未按所有异常路径释放。请在对 'srReadFile' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="databaseconnect" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#add2database(System.Collections.Generic.List`1&lt;MillionTools.tool1.StructInfo.macard&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-12-11 13:03:01Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="56">在方法 'databaseconnect.add2database(List&lt;macard&gt;)' 中，'conn' 对象未按所有异常路径释放。请在对 'conn' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="60">在方法 'databaseconnect.add2database(List&lt;macard&gt;)' 中，请在对 'add' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="55">在方法 'databaseconnect.add2database(List&lt;macard&gt;)' 中，请在对 'conn' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DBStructBuilder(System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-12-11 13:03:01Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="38">在方法 'databaseconnect.DBStructBuilder(string)' 中，请在对 'cmdCreateTable' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="31">在方法 'databaseconnect.DBStructBuilder(string)' 中，请在对 'conn' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="35">在方法 'databaseconnect.DBStructBuilder(string)' 中，请在对 'conn' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#reader()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-12-11 13:03:01Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="databaseconnect.cs" Line="80">在方法 'databaseconnect.reader()' 中，'srReadFile' 对象未按所有异常路径释放。请在对 'srReadFile' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HttpUtil" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#decrypt(System.Byte[])" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-12-11 13:03:01Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="182">在方法 'HttpUtil.decrypt(byte[])' 中，请在对 '&lt;&gt;g__initLocal1' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Encypt(System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2013-12-11 13:03:01Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="E:\HAmmer\WindowsFormsApplication1\tool1\util" File="HttpUtil.cs" Line="52">在方法 'HttpUtil.Encypt(string)' 中，请在对 '&lt;&gt;g__initLocal0' 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="丢失范围之前释放对象" Category="Microsoft.Reliability" CheckId="CA2000">
+   <Name>丢失范围之前释放对象</Name>
+   <Description>如果在对某个可释放对象的所有引用超出范围之前未显式释放该对象，则当垃圾回收器运行该对象的终结器时，会在某个不确定时间释放该对象。由于可能会发生阻止该对象的终结器运行的意外事件，因此应改为显式释放该对象。</Description>
+   <Resolution Name="ExceptionEdge">在方法 {0} 中，{1} 对象未按所有异常路径释放。请在对 {1} 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Resolution>
+   <Resolution Name="NonExceptionEdge">在方法 {0} 中，请在对 {1} 对象的所有引用超出范围之前，对该对象调用 System.IDisposable.Dispose。</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182289(VS.100).aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="10.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">类别</String>
+  <String Key="Certainty">确定性</String>
+  <String Key="CollapseAll">全部折叠</String>
+  <String Key="CheckId">检查 ID</String>
+  <String Key="Error">错误</String>
+  <String Key="Errors">错误</String>
+  <String Key="ExpandAll">全部展开</String>
+  <String Key="Help">帮助</String>
+  <String Key="Line">行</String>
+  <String Key="Messages">消息</String>
+  <String Key="LocationNotStoredInPdb">[位置未存储在 Pdb 中]</String>
+  <String Key="Project">项目</String>
+  <String Key="Resolution">解析</String>
+  <String Key="Rule">规则</String>
+  <String Key="RuleFile">规则文件</String>
+  <String Key="RuleDescription">规则说明</String>
+  <String Key="Source">源</String>
+  <String Key="Status">状态</String>
+  <String Key="Target">目标</String>
+  <String Key="Warning">警告</String>
+  <String Key="Warnings">警告</String>
+  <String Key="ReportTitle">代码分析报告</String>
+ </Localized>
+ <Exceptions>
+  <Exception Keyword="CA0060" Kind="Engine" TreatAsWarning="True">
+   <Type>Microsoft.FxCop.Sdk.FxCopException</Type>
+   <ExceptionMessage>未能找到间接引用的 Silverlight 程序集“System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, Retargetable=Yes”。此程序集不是分析所必需的，但是分析结果可能不完整。Silverlight 引用程序集应使用“/reference”开关指定。此程序集已由 E:\HAmmer\WindowsFormsApplication1\lib\Newtonsoft.Json.dll 引用。</ExceptionMessage>
+  </Exception>
+  <Exception Keyword="CA0060" Kind="Engine" TreatAsWarning="True">
+   <Type>Microsoft.FxCop.Sdk.FxCopException</Type>
+   <ExceptionMessage>未能找到间接引用的 Silverlight 程序集“System.Runtime.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, Retargetable=Yes”。此程序集不是分析所必需的，但是分析结果可能不完整。Silverlight 引用程序集应使用“/reference”开关指定。此程序集已由 E:\HAmmer\WindowsFormsApplication1\lib\Newtonsoft.Json.dll 引用。</ExceptionMessage>
+  </Exception>
+ </Exceptions>
+</FxCopReport>

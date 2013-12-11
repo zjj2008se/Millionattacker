@@ -23,3 +23,9 @@ D:\mytools\1\Millionattacker\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\HAmmer\WindowsFormsApplication1\bin\Debug\System.Data.SQLite.dll
 E:\HAmmer\WindowsFormsApplication1\bin\Debug\System.Data.SQLite.Linq.dll
 E:\HAmmer\WindowsFormsApplication1\obj\x86\Debug\MillionTools.csprojResolveAssemblyReference.cache
+D:\mytools\1\Millionattacker\bin\Debug\System.Data.SQLite.dll
+D:\mytools\1\Millionattacker\bin\Debug\System.Data.SQLite.Linq.dll
+D:\mytools\1\Millionattacker\bin\Debug\Newtonsoft.Json.dll
+D:\mytools\1\Millionattacker\bin\Debug\SQLite.Designer.dll
+D:\mytools\1\Millionattacker\bin\Debug\Newtonsoft.Json.pdb
+D:\mytools\1\Millionattacker\bin\Debug\Newtonsoft.Json.xml

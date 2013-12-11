@@ -8,10 +8,14 @@ using System.Text;
 using System.Windows.Forms;
 using MillionTools.tool1;
 using MillionTools.tool1.StructInfo;
+using MillionTools.tool1.util;
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        databaseconnect db = new databaseconnect();
+
+
         Services updater = new Services();
         PlayerInfo playerinfo = new PlayerInfo();
         bool autoBattle = false;
@@ -374,6 +378,12 @@ namespace WindowsFormsApplication1
                limit =  int.Parse(textBoxlimitBC.Text);
            }
            updater.PVP(limit);
+       }
+
+       private void button1_Click(object sender, EventArgs e)
+       {
+           bool test;
+           db.init();
        }
 
 

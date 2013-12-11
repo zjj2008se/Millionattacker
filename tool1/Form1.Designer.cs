@@ -61,6 +61,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxlimitBC = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonpvpbattle = new System.Windows.Forms.Button();
             this.listViewFairyInfo = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -90,23 +95,19 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timerUI = new System.Windows.Forms.Timer(this.components);
-            this.buttonpvpbattle = new System.Windows.Forms.Button();
             this.timerpvp = new System.Windows.Forms.Timer(this.components);
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxlimitBC = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControlController.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.contextMenuStripbattle.SuspendLayout();
             this.tabControlInfomation.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.contextMenuStripFriend.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textLogin
@@ -336,6 +337,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -357,10 +359,10 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.comboBoxAreaList);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 21);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(313, 376);
+            this.tabPage1.Size = new System.Drawing.Size(313, 377);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "常规";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -428,6 +430,56 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "吃药模式";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.textBoxlimitBC);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.buttonpvpbattle);
+            this.tabPage2.Location = new System.Drawing.Point(4, 21);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(313, 377);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "PVP排名";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(121, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "瓶时停止";
+            // 
+            // textBoxlimitBC
+            // 
+            this.textBoxlimitBC.Location = new System.Drawing.Point(66, 15);
+            this.textBoxlimitBC.Name = "textBoxlimitBC";
+            this.textBoxlimitBC.Size = new System.Drawing.Size(49, 21);
+            this.textBoxlimitBC.TabIndex = 31;
+            this.textBoxlimitBC.Text = "1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "红茶少于";
+            // 
+            // buttonpvpbattle
+            // 
+            this.buttonpvpbattle.Enabled = false;
+            this.buttonpvpbattle.Location = new System.Drawing.Point(180, 12);
+            this.buttonpvpbattle.Name = "buttonpvpbattle";
+            this.buttonpvpbattle.Size = new System.Drawing.Size(78, 27);
+            this.buttonpvpbattle.TabIndex = 28;
+            this.buttonpvpbattle.Text = "开始pvp";
+            this.buttonpvpbattle.UseVisualStyleBackColor = true;
+            this.buttonpvpbattle.Click += new System.EventHandler(this.buttonpvpbattle_Click);
             // 
             // listViewFairyInfo
             // 
@@ -499,10 +551,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.listViewFairyInfo);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 21);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(464, 376);
+            this.tabPage3.Size = new System.Drawing.Size(464, 377);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "妖精信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -517,10 +569,10 @@
             this.tabPage4.Controls.Add(this.buttonSearchFriend);
             this.tabPage4.Controls.Add(this.buttonFriendAdd);
             this.tabPage4.Controls.Add(this.listViewFriend);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 21);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(464, 376);
+            this.tabPage4.Size = new System.Drawing.Size(464, 377);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "好友信息";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -648,60 +700,20 @@
             this.timerUI.Interval = 5000;
             this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
             // 
-            // buttonpvpbattle
-            // 
-            this.buttonpvpbattle.Enabled = false;
-            this.buttonpvpbattle.Location = new System.Drawing.Point(180, 12);
-            this.buttonpvpbattle.Name = "buttonpvpbattle";
-            this.buttonpvpbattle.Size = new System.Drawing.Size(78, 27);
-            this.buttonpvpbattle.TabIndex = 28;
-            this.buttonpvpbattle.Text = "开始pvp";
-            this.buttonpvpbattle.UseVisualStyleBackColor = true;
-            this.buttonpvpbattle.Click += new System.EventHandler(this.buttonpvpbattle_Click);
-            // 
             // timerpvp
             // 
             this.timerpvp.Interval = 60000;
             this.timerpvp.Tick += new System.EventHandler(this.timerpvp_Tick);
             // 
-            // tabPage2
+            // button1
             // 
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.textBoxlimitBC);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.buttonpvpbattle);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(313, 376);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "PVP排名";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "红茶少于";
-            // 
-            // textBoxlimitBC
-            // 
-            this.textBoxlimitBC.Location = new System.Drawing.Point(66, 15);
-            this.textBoxlimitBC.Name = "textBoxlimitBC";
-            this.textBoxlimitBC.Size = new System.Drawing.Size(49, 21);
-            this.textBoxlimitBC.TabIndex = 31;
-            this.textBoxlimitBC.Text = "1";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(121, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 12);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "瓶时停止";
+            this.button1.Location = new System.Drawing.Point(120, 344);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(73, 23);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "数据库";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -725,14 +737,14 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.contextMenuStripbattle.ResumeLayout(false);
             this.tabControlInfomation.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.contextMenuStripFriend.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -807,6 +819,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxlimitBC;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
 

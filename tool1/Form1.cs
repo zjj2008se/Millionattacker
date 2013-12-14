@@ -384,7 +384,7 @@ namespace WindowsFormsApplication1
        {
            bool test;
            //cr.reader();
-           db.init();
+           //db.init();
            MessageBox.Show("OK");
        }
 

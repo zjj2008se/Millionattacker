@@ -40,7 +40,10 @@ namespace MillionTools.tool1
             serverTW = TWorCN;
             GameUtil.isTW = serverTW;
         }
-
+        public void login() 
+        {
+            XmlDocument response = GameUtil.login();
+        }
         public AreaList getarealist() 
         {
             MessagePackage message = new MessagePackage();

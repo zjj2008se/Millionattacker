@@ -38,6 +38,7 @@ namespace MillionTools.tool1
 
             if (errorcode == "9000")
             {
+                
                 islogin = false;
                 connect(data, url);
             }
@@ -228,6 +229,19 @@ namespace MillionTools.tool1
             return response;
         }
         public XmlDocument pvpbattle(string id,string event_id)
+        {
+            string url = "/connect/app/battle/battle?cyt=1";
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("", "");
+            IDictionary<string, string> parameters = dictionary;
+            parameters.Clear();
+            parameters.Add("battle_type", "0");
+            parameters.Add("event_id", event_id);
+            parameters.Add("user_id", id);
+            XmlDocument response = connect(parameters, url);
+            return response;
+        }
+        public XmlDocument getdeck(string id, string event_id)
         {
             string url = "/connect/app/battle/battle?cyt=1";
             Dictionary<string, string> dictionary = new Dictionary<string, string>();

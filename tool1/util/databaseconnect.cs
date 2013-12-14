@@ -11,90 +11,48 @@ namespace MillionTools.tool1.util
 {
     class databaseconnect
     {
-        string dbpath = "ma.db";
-        string path1 = "Data Source =" + System.Environment.CurrentDirectory + "\\" + "ma.db";
-        public void init()
-        {
-            if (System.IO.File.Exists(@dbpath))
-            {
-                add2database(reader());
-            }
-            else
-            {
-                SQLiteConnection.CreateFile(dbpath);
-                DBStructBuilder(dbpath);
-                this.init();
-            }
-        }
+        static string dbpath = "madata.db";
+        string path1 = "Data Source =" + System.Environment.CurrentDirectory + "\\" + dbpath;
         private bool DBStructBuilder(string path)
         {
             SQLiteConnection conn = new SQLiteConnection();
-            try 
+            try
             {
-                
+
                 conn = new SQLiteConnection(path1);
                 conn.Open();
-                string sql = "CREATE TABLE IF NOT EXISTS carddb(id integer, name varchar(20),cost integer,ability varchar(100),abilityvar real,abilityrate varchar(50),sex varchar(2),abilityname varchar(99));";//建表语句  
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                string creatcardtable = "CREATE TABLE IF NOT EXISTS carddb(sid varchar(99),id integer,name varchar(20),star integer,cost integer,hp integer,atk integer,shp integer,satk integer,abilitytype varchar(100),abilityvar real,abilityrate integer,sex varchar(2),cp real,scp real);";//建表语句  
+                /*数据库结构：sid=卡牌实际ID
+                 * id=卡牌类型
+                 * shp=释放技能后HP
+                 * satk=释放技能后ATK
+                 * abilitytype包含
+                     * COND_RECOVERY_HP=条件回血,
+                     * TURN_UP_RECOVERY_HP=回合越多回血越多,
+                     * TURN_DOWN_ATK_UP=回合越少回血越多，
+                     * RECOVERY_HP=无条件回血,
+                     * ATK_UP=无条件攻击上升,
+                     * COND_ATK_UP=条件攻击上升,
+                     * TURN_UP_ATK_UP=回合式ATK上升,
+                     * TURN_DOWN_ATK_UP=回合越少式ATK上升,
+                     * FIRST_ATK_UP=第一轮攻击上升,
+                     * RECOVERY_BC=回复BC,
+                     * RECOVERY_AP=回复AP，
+                     * SUPER_UP=增加super，
+                 * CP=卡片价值，
+                 * SCP=卡片技能加成后的价值，
+                 * */
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(creatcardtable, conn);
                 cmdCreateTable.ExecuteNonQuery();
                 conn.Close();
             }
-            catch 
+            catch
             {
 
             }
             return true;
         }
-        public void add()
-        {
-
-        }
-        private void add2database(List<macard> macard) 
-        {
-            int count = macard.Count;
-            SQLiteConnection conn = new SQLiteConnection();
-            conn= new SQLiteConnection(path1);
-            conn.Open();
-            for (int j = 0; j < count; j++) 
-            {
-                SQLiteCommand add = new SQLiteCommand(conn);
-                add.CommandText = "insert into carddb values(@id, @name, @cost,@ability,@abilityvar,@abilityrate,@sex,@abilityname)";
-                add.Parameters.AddRange(new[] {//添加参数  
-                           new SQLiteParameter("@id", macard[j].a),  
-                           new SQLiteParameter("@name", macard[j].b),  
-                           new SQLiteParameter("@cost", macard[j].e),
-                            new SQLiteParameter("@ability", macard[j].g),
-                            new SQLiteParameter("@abilityvar", macard[j].h),
-                            new SQLiteParameter("@abilityrate",macard[j].j),
-                            new SQLiteParameter("@sex", macard[j].m),
-                            new SQLiteParameter("@abilityname", macard[j].z),
-                       });
-                add.ExecuteNonQuery();
-            }
-            conn.Close();
-        }
-        private List<macard> reader()
-        {
-            string json = "";
-            string strReadFilePath = System.Environment.CurrentDirectory + "\\" + "ma_card.dat";
-            StreamReader srReadFile = new StreamReader(strReadFilePath);
-
-            while (!srReadFile.EndOfStream)
-            {
-                json = json + srReadFile.ReadLine();
-            }
-            srReadFile.Close();
-            json = json.Replace("\t", "");
-            json = json.Replace(" ", "");
-            //json = json.Replace("[", "");
-            //json = json.Replace("]", "");
-            List<macard> macardlist = JsonConvert.DeserializeObject<List<macard>>(json);
-            macardlist[1].a.ToString();
-            return macardlist;
-
-
-        }
-
 
     }
 }
+ 
